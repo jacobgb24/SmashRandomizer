@@ -8,10 +8,11 @@
 
     <GridView
         android:id="@+id/grid_character_selection"
+        android:padding="16dp"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:padding="16dp"
-        android:numColumns="4"
+        android:columnWidth="72dp"
+        android:numColumns="auto_fit"
         android:gravity="center"
 
     />
