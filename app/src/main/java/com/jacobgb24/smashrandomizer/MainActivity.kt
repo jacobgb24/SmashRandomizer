@@ -6,13 +6,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var adapter: CharacterSelectionAdapter? = null
+    lateinit var adapter: CharacterSelectionAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var characters = generateCharacters(this)
-        adapter = CharacterSelectionAdapter(this, characters)
+        adapter = CharacterSelectionAdapter(this)
 
         grid_character_selection.adapter = adapter
     }
