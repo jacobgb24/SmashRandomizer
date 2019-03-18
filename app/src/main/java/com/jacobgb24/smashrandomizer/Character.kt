@@ -5,15 +5,15 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.Log
 
-class Character(val name: String, val imageName: String, var isSelected: Boolean = true) {
+class Character(val name: String, val imageName: String, val context: Context, var isSelected: Boolean = true) {
+    // use these to load images via Glide.with(context).load(character.portraitUri).into(view)
+    val iconUri: Uri = Uri.parse("file:///android_asset/icons/$imageName")
+    val portraitUri: Uri = Uri.parse("file:///android_asset/portraits/$imageName")
 
-    fun getIconUri(): Uri {
-        return Uri.parse("file:///android_asset/icons/$imageName")
+    //this will get stored in memory, but I don't notice a different in ram usage and it is faster
+    val iconDrawable: Drawable by lazy {
+        Drawable.createFromStream(context.assets.open("icons/$imageName"), null)
 
-    }
-
-    fun getPortraiUri(): Uri {
-        return Uri.parse("file:///android_asset/portraits/$imageName")
     }
 
     fun toggle() {
@@ -40,7 +40,7 @@ fun generateCharacters(context: Context): ArrayList<Character> {
             else -> getNameFromPath(image)
         }
 
-        characters.add(Character(name, image))
+        characters.add(Character(name, image, context))
     }
 
     return characters
@@ -49,9 +49,9 @@ fun generateCharacters(context: Context): ArrayList<Character> {
 fun getNameFromPath(image: String): String {
     var name = "${image[0].toUpperCase()}"
     for (char in image.substring(1, image.indexOf("."))) {
-        when {
-            char.isLowerCase() -> name += char
-            else -> name += " $char"
+        name += when {
+            char.isLowerCase() -> char
+            else -> " $char"
         }
     }
     return name
