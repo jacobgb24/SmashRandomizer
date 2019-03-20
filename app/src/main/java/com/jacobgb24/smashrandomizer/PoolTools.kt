@@ -13,8 +13,9 @@ fun ArrayList<Character>.getSelected(): ArrayList<Character> = ArrayList(filter 
 
 fun ArrayList<Character>.getNewRandom(current: Character?): Character {
     var nextChar: Character
+    val selected = getSelected()
     do {
-        nextChar = getSelected()[Random().nextInt(size)]
+        nextChar = selected[Random().nextInt(selected.size)]
     } while(current?.equals(nextChar) == true) // have to do == true to make current being null = false
     return nextChar
 
@@ -54,5 +55,21 @@ fun generateCharacters(context: Context): ArrayList<Character> {
     }
 
     return characters
+}
+
+fun saveSelections(context: Context) {
+    val sharedPreferences = context.getSharedPreferences(context.getString(R.string.selection_file_key), Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    for (character in mainCharacterList) {
+        editor.putBoolean(character.imageName, character.isSelected)
+    }
+    editor.apply()
+}
+
+fun loadSelection(context: Context) {
+    val sharedPreferences = context.getSharedPreferences(context.getString(R.string.selection_file_key), Context.MODE_PRIVATE)
+    for (character in mainCharacterList) {
+        character.isSelected = sharedPreferences.getBoolean(character.imageName, true)
+    }
 }
 

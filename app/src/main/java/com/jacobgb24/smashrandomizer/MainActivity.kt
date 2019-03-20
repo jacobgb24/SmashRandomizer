@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mainCharacterList = generateCharacters(this)
+        loadSelection(this)
 
         setRandomChar()
 
@@ -41,6 +42,12 @@ class MainActivity : AppCompatActivity() {
         text_character_name_random.text = currentCharacter!!.name
         image_character_random.contentDescription = "Current Character: ${currentCharacter!!.name}"
     }
+
+    override fun onPause() {
+        super.onPause()
+        saveSelections(this)
+    }
+
 }
 
 

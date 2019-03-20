@@ -10,14 +10,13 @@ import android.widget.ImageView
 import kotlinx.android.synthetic.main.item_character_selection.view.*
 
 class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), CharacterClickHandler {
-    var characterList = generateCharacters(context)
 
     override fun getCount(): Int {
-        return characterList.size
+        return mainCharacterList.size
     }
 
     override fun getItem(position: Int): Any {
-        return characterList[position]
+        return mainCharacterList[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -43,7 +42,7 @@ class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), Ch
     }
 
     override fun onClick(pos: Int) {
-        characterList[pos].toggle()
+        mainCharacterList[pos].toggle()
         notifyDataSetChanged()
     }
 
@@ -57,7 +56,7 @@ class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), Ch
         else {
             viewHolder = convertView.tag as CharacterViewHolder
         }
-        viewHolder.bind(position, characterList[position], this)
+        viewHolder.bind(position, mainCharacterList[position], this)
         return viewHolder.v
     }
 
