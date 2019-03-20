@@ -17,6 +17,6 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:foreground="@drawable/selector_character_state"
         android:id="@+id/image_character_icon"
-        tools:ignore="contentDescription"
-        />
+        tools:ignore="contentDescription"/>
+
 </LinearLayout>

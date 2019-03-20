@@ -10,7 +10,7 @@ class Character(val name: String, val imageName: String, val context: Context, v
     val iconUri: Uri = Uri.parse("file:///android_asset/icons/$imageName")
     val portraitUri: Uri = Uri.parse("file:///android_asset/portraits/$imageName")
 
-    //this will get stored in memory, but I don't notice a different in ram usage and it is faster
+    //this will get stored in memory, but I don't notice a difference in ram usage and it is faster
     val iconDrawable: Drawable by lazy {
         Drawable.createFromStream(context.assets.open("icons/$imageName"), null)
 
