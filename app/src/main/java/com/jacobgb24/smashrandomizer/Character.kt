@@ -3,7 +3,14 @@ package com.jacobgb24.smashrandomizer
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.RelativeSizeSpan
+import android.text.style.SuperscriptSpan
 import android.util.Log
+import kotlin.math.floor
 
 class Character(val name: String, val imageName: String, val context: Context, var isSelected: Boolean = true) {
     // use these to load images via Glide.with(context).load(character.portraitUri).into(view)
@@ -11,6 +18,15 @@ class Character(val name: String, val imageName: String, val context: Context, v
     val portraitUri: Uri = Uri.parse("file:///android_asset/portraits/$imageName")
 
     val appearanceOrder = getAppearanceOrder()
+    fun getOrderString(): SpannableStringBuilder  {
+        val build = SpannableStringBuilder("${floor(appearanceOrder.toDouble()).toInt()}")
+        if (appearanceOrder.toDouble() % 1 != 0.0) {
+            build.append("ε")
+            build.setSpan(SuperscriptSpan(), build.length - 1, build.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            build.setSpan(RelativeSizeSpan(.6f), build.length - 1, build.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+        return build
+    }
 
     //this will get stored in memory, but I don't notice a difference in ram usage and it is faster
     val iconDrawable: Drawable by lazy {

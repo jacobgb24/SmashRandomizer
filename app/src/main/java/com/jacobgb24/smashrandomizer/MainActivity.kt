@@ -2,6 +2,7 @@ package com.jacobgb24.smashrandomizer
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         currentCharacter = mainCharacterList.getNewRandom(currentCharacter)
         Glide.with(this).load(currentCharacter!!.portraitUri)
             .transition(withCrossFade()).into(image_character_random)
-        text_character_name_random.text = currentCharacter!!.name
+        text_character_name_random.text = currentCharacter!!.getOrderString().append("  ${currentCharacter!!.name}")
         image_character_random.contentDescription = "Current Character: ${currentCharacter!!.name}"
     }
 
