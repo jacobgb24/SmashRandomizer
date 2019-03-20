@@ -77,7 +77,7 @@ fun Character.getAppearanceOrder(): Number {
         "pichu.webp" -> 19
         "pikachu.webp" -> 8
         "piranhaPlant.webp" -> 70
-        "pit.webp" -> 30
+        "pit.webp" -> 28
         "pokemonTrainer.webp" -> 33
         "richter.webp" -> 66.5
         "ridley.webp" -> 65
