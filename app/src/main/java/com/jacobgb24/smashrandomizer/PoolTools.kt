@@ -15,7 +15,6 @@ fun ArrayList<Character>.getNewRandom(current: Character?): Character {
     var nextChar: Character
     do {
         nextChar = getSelected()[Random().nextInt(size)]
-        Log.e("next vs current", "${nextChar.name} - ${current?.name}")
     } while(current?.equals(nextChar) == true) // have to do == true to make current being null = false
     return nextChar
 
