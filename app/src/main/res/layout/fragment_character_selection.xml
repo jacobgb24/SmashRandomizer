@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CharacterSelectionFragment"
+    android:background="?android:colorBackground"
     android:id="@+id/root_character_selection">
 
 
