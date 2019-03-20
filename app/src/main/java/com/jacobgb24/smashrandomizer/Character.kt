@@ -10,6 +10,8 @@ class Character(val name: String, val imageName: String, val context: Context, v
     val iconUri: Uri = Uri.parse("file:///android_asset/icons/$imageName")
     val portraitUri: Uri = Uri.parse("file:///android_asset/portraits/$imageName")
 
+    val appearanceOrder = getAppearanceOrder()
+
     //this will get stored in memory, but I don't notice a difference in ram usage and it is faster
     val iconDrawable: Drawable by lazy {
         Drawable.createFromStream(context.assets.open("icons/$imageName"), null)
@@ -22,3 +24,83 @@ class Character(val name: String, val imageName: String, val context: Context, v
 
 }
 
+fun Character.getAppearanceOrder(): Number {
+    return when(imageName) {
+        "bayonetta.webp" -> 63
+        "bowser.webp" -> 14
+        "bowserJr.webp" -> 58
+        "captainFalcon.webp" -> 11
+        "chrom.webp" -> 25.5
+        "cloud.webp" -> 61
+        "corrin.webp" -> 62
+        "daisy.webp" -> 13.5
+        "darkPit.webp" -> 28.5
+        "darkSamus.webp" -> 4.5
+        "diddyKong.webp" -> 36
+        "donkeyKong.webp" -> 2
+        "drMario.webp" -> 18
+        "duckHunt.webp" -> 59
+        "falco.webp" -> 20
+        "fox.webp" -> 7
+        "ganondorf.webp" -> 23
+        "greninja.webp" -> 50
+        "iceClimbers.webp" -> 15
+        "ike.webp" -> 32
+        "incineroar.webp" -> 69
+        "inkling.webp" -> 64
+        "isabelle.webp" -> 68
+        "jigglypuff.webp" -> 12
+        "ken.webp" -> 60.5
+        "kingDedede.webp" -> 39
+        "kingKRool.webp" -> 67
+        "kirby.webp" -> 6
+        "link.webp" -> 3
+        "littleMac.webp" -> 49
+        "lucario.webp" -> 41
+        "lucas.webp" -> 37
+        "lucina.webp" -> 21.5
+        "luigi.webp" -> 9
+        "mario.webp" -> 1
+        "marth.webp" -> 21
+        "megaMan.webp" -> 46
+        "metaKnight.webp" -> 27
+        "mewtwo.webp" -> 24
+        "miiBrawler.webp" -> 51
+        "miiGunner.webp" -> 53
+        "miiSwordfighter.webp" -> 52
+        "mrGame&Watch.webp" -> 26
+        "ness.webp" -> 10
+        "olimar.webp" -> 40
+        "pacman.webp" -> 55
+        "palutena.webp" -> 54
+        "peach.webp" -> 13
+        "pichu.webp" -> 19
+        "pikachu.webp" -> 8
+        "piranhaPlant.webp" -> 70
+        "pit.webp" -> 30
+        "pokemonTrainer.webp" -> 33
+        "richter.webp" -> 66.5
+        "ridley.webp" -> 65
+        "rob.webp" -> 42
+        "robin.webp" -> 56
+        "rosalina&Luma.webp" -> 48
+        "roy.webp" -> 25
+        "ryu.webp" -> 60
+        "samus.webp" -> 4
+        "sheik.webp" -> 16
+        "shulk.webp" -> 57
+        "simon.webp" -> 66
+        "snake.webp" -> 31
+        "sonic.webp" -> 38
+        "toonLink.webp" -> 43
+        "villager.webp" -> 45
+        "wario.webp" -> 30
+        "wiiFitTrainer.webp" -> 47
+        "wolf.webp" -> 44
+        "yoshi.webp" -> 5
+        "youngLink.webp" -> 22
+        "zelda.webp" -> 17
+        "zeroSuitSamus.webp" -> 29
+        else -> Int.MAX_VALUE
+    }
+}

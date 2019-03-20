@@ -21,6 +21,8 @@ fun ArrayList<Character>.getNewRandom(current: Character?): Character {
 
 }
 
+fun ArrayList<Character>.sortByAppearance() = sortBy { it.appearanceOrder.toDouble() }
+
 
 fun generateCharacters(context: Context): ArrayList<Character> {
 
@@ -53,7 +55,7 @@ fun generateCharacters(context: Context): ArrayList<Character> {
 
         characters.add(Character(name, image, context))
     }
-
+    characters.sortByAppearance()
     return characters
 }
 
