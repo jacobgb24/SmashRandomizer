@@ -4,18 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/root_activity">
 
-    <!--<GridView-->
-        <!--android:id="@+id/grid_character_selection"-->
-        <!--android:padding="16dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:columnWidth="72dp"-->
-        <!--android:numColumns="auto_fit"-->
-        <!--android:gravity="center"-->
-
-    <!--/>-->
     <ImageView
         android:layout_width="324dp"
         android:layout_height="324dp"
@@ -34,6 +25,27 @@
         android:textColor="@android:color/black"
         android:textAlignment="center"
         android:id="@+id/text_character_name_random"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_random"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="start"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/button_view_pool"/>
+
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/button_iron_man"/>
+    </RelativeLayout>
 
     <Button
         android:layout_width="match_parent"

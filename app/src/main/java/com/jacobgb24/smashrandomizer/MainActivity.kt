@@ -2,10 +2,16 @@ package com.jacobgb24.smashrandomizer
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+/*
+TODO: make view pool button attach the current pool fragment instead of the character selection fragment
+TODO: add icons for the view pool button and iron man button
+TODO: make fancy pants randomize button
+TODO: make fancy pants app icon
+ */
 class MainActivity : AppCompatActivity() {
 
     var currentCharacter: Character? = null
@@ -20,6 +26,10 @@ class MainActivity : AppCompatActivity() {
         button_random.setOnClickListener {
             setRandomChar()
         }
+
+        button_view_pool.setOnClickListener {
+            addFragment(CharacterSelectionFragment.newInstance(), R.id.root_activity)
+        }
     }
 
 
@@ -30,3 +40,6 @@ class MainActivity : AppCompatActivity() {
         image_character_random.contentDescription = "Current Character: ${currentCharacter!!.name}"
     }
 }
+
+
+
