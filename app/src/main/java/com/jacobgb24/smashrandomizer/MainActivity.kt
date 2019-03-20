@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_view_pool.setOnClickListener {
-            addFragment(CharacterSelectionFragment.newInstance(), R.id.root_activity)
+            addFragment(CharacterSelectionFragment.newInstance(), android.R.id.content)
         }
     }
 

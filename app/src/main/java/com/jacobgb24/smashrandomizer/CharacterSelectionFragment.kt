@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_character_selection.*
+import kotlinx.android.synthetic.main.fragment_character_selection.view.*
 
 
 class CharacterSelectionFragment : Fragment() {
@@ -28,13 +29,12 @@ class CharacterSelectionFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_character_selection, container, false)
+        val view = inflater.inflate(R.layout.fragment_character_selection, container, false)
+        adapter = CharacterSelectionAdapter(view.context)
+        view.grid_character_selection.adapter = adapter
+
+        return view
+
     }
 
-    // Populate grid view when fragment attaches.
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        adapter = CharacterSelectionAdapter(context!!)
-        grid_character_selection.adapter = adapter
-    }
 }
