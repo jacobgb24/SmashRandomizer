@@ -22,37 +22,3 @@ class Character(val name: String, val imageName: String, val context: Context, v
 
 }
 
-
-fun generateCharacters(context: Context): ArrayList<Character> {
-    val characters = ArrayList<Character>()
-
-    val portraits = context.assets.list("portraits")
-    for (image in portraits) {
-        val name = when(image) {
-            // handle special cases, otherwise do default parsing
-            "kingKRool.webp" -> "King K. Rool"
-            "rob.webp" -> "R.O.B."
-            "drMario.webp" ->"Dr. Mario"
-            "bowserJr.webp" -> "Bowser Jr."
-            "mrGame&Watch.webp" -> "Mr. Game & Watch"
-            "pacman.webp" -> "PAC-MAN"
-            "pokemonTrainer.webp" -> "Pokémon Trainer"
-            else -> getNameFromPath(image)
-        }
-
-        characters.add(Character(name, image, context))
-    }
-
-    return characters
-}
-
-fun getNameFromPath(image: String): String {
-    var name = "${image[0].toUpperCase()}"
-    for (char in image.substring(1, image.indexOf("."))) {
-        name += when {
-            char.isLowerCase() -> char
-            else -> " $char"
-        }
-    }
-    return name
-}
