@@ -1,15 +1,12 @@
-package com.jacobgb24.smashrandomizer
+package com.jacobgb24.smashrandomizer.model
 
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.text.Html
 import android.text.Spannable
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.RelativeSizeSpan
 import android.text.style.SuperscriptSpan
-import android.util.Log
 import kotlin.math.floor
 
 class Character(val name: String, val imageName: String, val context: Context, var isSelected: Boolean = true) {

@@ -1,4 +1,4 @@
-package com.jacobgb24.smashrandomizer.views
+package com.jacobgb24.smashrandomizer.view
 
 import android.content.Context
 import android.os.Bundle
