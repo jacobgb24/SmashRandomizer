@@ -1,4 +1,4 @@
-package com.jacobgb24.smashrandomizer
+package com.jacobgb24.smashrandomizer.controller
 
 import android.content.Context
 import android.os.Build
@@ -7,9 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
+import com.jacobgb24.smashrandomizer.model.Character
+import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.model.mainCharacterList
 import kotlinx.android.synthetic.main.item_character_selection.view.*
 
-class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), CharacterClickHandler {
+class CharacterSelectionAdapter(private val context: Context): BaseAdapter(),
+    CharacterClickHandler {
 
     override fun getCount(): Int {
         return mainCharacterList.size
@@ -50,7 +54,8 @@ class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), Ch
         val viewHolder: CharacterViewHolder?
         if (convertView == null) {
             val charView = LayoutInflater.from(context).inflate(R.layout.item_character_selection, parent, false)
-            viewHolder = CharacterViewHolder(charView)
+            viewHolder =
+                CharacterViewHolder(charView)
             charView.tag = viewHolder
         }
         else {

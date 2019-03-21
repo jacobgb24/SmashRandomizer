@@ -1,8 +1,7 @@
-package com.jacobgb24.smashrandomizer
+package com.jacobgb24.smashrandomizer.model
 
 import android.content.Context
-import android.preference.PreferenceManager
-import android.util.Log
+import com.jacobgb24.smashrandomizer.R
 import java.util.*
 import kotlin.collections.ArrayList
 
