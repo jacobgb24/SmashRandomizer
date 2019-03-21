@@ -1,12 +1,12 @@
-package com.jacobgb24.smashrandomizer
+package com.jacobgb24.smashrandomizer.views
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_character_selection.*
+import com.jacobgb24.smashrandomizer.CharacterSelectionAdapter
+import com.jacobgb24.smashrandomizer.R
 import kotlinx.android.synthetic.main.fragment_character_selection.view.*
 
 

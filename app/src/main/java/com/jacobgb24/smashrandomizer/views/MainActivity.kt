@@ -1,10 +1,14 @@
-package com.jacobgb24.smashrandomizer
+package com.jacobgb24.smashrandomizer.views
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Html
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.jacobgb24.smashrandomizer.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -35,12 +39,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.menu_open_settings -> {
+                startActivity(Intent(this, PreferenceActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     private fun setRandomChar() {
         currentCharacter = mainCharacterList.getNewRandom(currentCharacter)
         Glide.with(this).load(currentCharacter!!.portraitUri)
             .transition(withCrossFade()).into(image_character_random)
-        text_character_name_random.text = currentCharacter!!.getOrderString().append("  ${currentCharacter!!.name}")
+        text_character_name_random.text = currentCharacter!!.getOrderString().append(" - ${currentCharacter!!.name}")
         image_character_random.contentDescription = "Current Character: ${currentCharacter!!.name}"
     }
 
