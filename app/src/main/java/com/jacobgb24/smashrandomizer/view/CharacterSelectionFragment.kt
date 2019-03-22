@@ -14,21 +14,12 @@ class CharacterSelectionFragment : Fragment() {
 
     private lateinit var adapter: CharacterSelectionAdapter
 
-    // Factory method
-    companion object {
-        fun newInstance(): CharacterSelectionFragment {
-            return CharacterSelectionFragment()
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     // Create view hierarchy controlled by fragment.
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_character_selection, container, false)
         adapter = CharacterSelectionAdapter(view.context)
         view.grid_character_selection.adapter = adapter
