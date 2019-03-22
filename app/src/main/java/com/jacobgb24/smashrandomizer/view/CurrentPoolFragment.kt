@@ -7,6 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.controller.CharacterSelectionAdapter
+import com.jacobgb24.smashrandomizer.controller.MainActivity
+import com.jacobgb24.smashrandomizer.controller.PoolViewAdapter
+import kotlinx.android.synthetic.main.fragment_character_selection.view.*
+import kotlinx.android.synthetic.main.fragment_current_pool.view.*
 
 /*
 TODO: define layout for this fragment
@@ -15,22 +20,25 @@ TODO: figure out how to transition from this fragment to the character select fr
 */
 class CurrentPoolFragment : Fragment() {
 
-    // Factory method
-    companion object {
-        fun newInstance(): CharacterSelectionFragment {
-            return CharacterSelectionFragment()
+
+    private lateinit var adapter: PoolViewAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    // Create view hierarchy controlled by fragment.
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_current_pool, container, false)
+        adapter = PoolViewAdapter(view.context)
+        view.grid_pool.adapter = adapter
+
+        view.button_change_pool.setOnClickListener {
+            (activity as MainActivity).addFragment(CharacterSelectionFragment())
         }
-    }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_current_pool, container, false)
-    }
+        return view
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
     }
 
 

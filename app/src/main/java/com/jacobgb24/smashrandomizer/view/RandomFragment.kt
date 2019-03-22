@@ -9,8 +9,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.*
 import com.jacobgb24.smashrandomizer.controller.MainActivity
-import com.jacobgb24.smashrandomizer.controller.addFragment
-import com.jacobgb24.smashrandomizer.controller.replaceFragment
 import com.jacobgb24.smashrandomizer.model.Character
 import com.jacobgb24.smashrandomizer.model.getNewRandom
 import com.jacobgb24.smashrandomizer.model.mainCharacterList
@@ -40,16 +38,17 @@ class RandomFragment : Fragment() {
         }
 
         view.button_view_pool.setOnClickListener {
-            (activity as MainActivity).replaceFragment(CharacterSelectionFragment())
+            (activity as MainActivity).addFragment(CurrentPoolFragment())
         }
 
         return view
 
     }
 
-    override fun onStart() {
+    override fun onResume() {
+        Log.e("RandomFrag", "onResume")
         setRandomChar()
-        super.onStart()
+        super.onResume()
     }
 
 
@@ -59,7 +58,7 @@ class RandomFragment : Fragment() {
         Glide.with(this).load(currentCharacter!!.portraitUri)
             .transition(DrawableTransitionOptions.withCrossFade()).into(image_character_random)
         text_character_name_random.text = currentCharacter!!.getOrderString().append(" - ${currentCharacter!!.name}")
-        image_character_random.contentDescription = "Current Character: ${currentCharacter!!.name}"
+        image_character_random.setHelp("Current Character: ${currentCharacter!!.name}")
     }
 
 
@@ -72,7 +71,7 @@ class RandomFragment : Fragment() {
         // Handle item selection
         return when (item.itemId) {
             R.id.menu_open_settings -> {
-                (activity as MainActivity).replaceFragment(PreferenceFragment())
+                (activity as MainActivity).addFragment(PreferenceFragment())
                 true
             }
             else -> super.onOptionsItemSelected(item)
