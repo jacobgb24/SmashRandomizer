@@ -14,7 +14,7 @@
         android:adjustViewBounds="true"
         android:clickable="true"
         android:focusable="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:background="?attr/selectableItemBackground"
         android:foreground="@drawable/selector_character_state"
         android:id="@+id/image_character_icon_selectable"
         tools:ignore="contentDescription"/>

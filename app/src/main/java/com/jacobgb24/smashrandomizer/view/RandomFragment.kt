@@ -1,6 +1,11 @@
 package com.jacobgb24.smashrandomizer.view
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.RippleDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -40,6 +45,7 @@ class RandomFragment : Fragment() {
         view.button_view_pool.setOnClickListener {
             (activity as MainActivity).addFragment(CurrentPoolFragment())
         }
+        view.button_random.addRippleFG()
 
         return view
 
