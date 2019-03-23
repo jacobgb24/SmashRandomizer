@@ -7,6 +7,7 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.RelativeSizeSpan
 import android.text.style.SuperscriptSpan
+import android.util.Log
 import kotlin.math.floor
 
 class Character(val name: String, val imageName: String, val context: Context, var isSelected: Boolean = true) {
@@ -21,6 +22,10 @@ class Character(val name: String, val imageName: String, val context: Context, v
             build.append("ε")
             build.setSpan(SuperscriptSpan(), build.length - 1, build.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             build.setSpan(RelativeSizeSpan(.6f), build.length - 1, build.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+        //increase start padding for uniformity
+        for(i in 1..(3 - build.length)) {
+            build.insert(0, " ")
         }
         return build
     }
