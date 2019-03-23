@@ -37,33 +37,34 @@ class RandomFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_random, container, false)
         Log.e("RandomFrag", "onCreateView")
+        view.button_random.addRippleFG()
+        view.button_iron_man.addRippleFG()
+        view.button_view_pool.addRippleFG()
 
         view.button_random.setOnClickListener {
             setRandomChar()
         }
-
         view.button_view_pool.setOnClickListener {
             (activity as MainActivity).addFragment(CurrentPoolFragment())
         }
-        view.button_random.addRippleFG()
 
         return view
 
     }
 
-    override fun onResume() {
-        Log.e("RandomFrag", "onResume")
+    override fun onStart() {
         setRandomChar()
-        super.onResume()
+        super.onStart()
     }
 
 
 
     private fun setRandomChar() {
         currentCharacter = mainCharacterList.getNewRandom(currentCharacter)
-        Glide.with(this).load(currentCharacter!!.portraitUri)
+        Glide.with(this).load(currentCharacter!!.portraitUri).override(1200, 1200)
             .transition(DrawableTransitionOptions.withCrossFade()).into(image_character_random)
-        text_character_name_random.text = currentCharacter!!.getOrderString().append(" - ${currentCharacter!!.name}")
+        text_character_name_random.text = currentCharacter!!.name
+        text_character_number_random.text = currentCharacter!!.getOrderString()
         image_character_random.setHelp("Current Character: ${currentCharacter!!.name}")
     }
 

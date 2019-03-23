@@ -19,7 +19,11 @@ fun ImageView.setHelp(str: String) {
 }
 
 
+/**
+ * Applies a foreground ripple using the button's background as a bounding mask
+ * @param color the desired color of the ripple
+ */
 fun ImageButton.addRippleFG(color: String = "#44DEDEDE") {
-    val ripple = RippleDrawable(ColorStateList.valueOf(Color.parseColor(color)), drawable, drawable)
+    val ripple = RippleDrawable(ColorStateList.valueOf(Color.parseColor(color)), background, background)
     foreground = ripple
 }
