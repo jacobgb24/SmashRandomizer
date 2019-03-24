@@ -5,9 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.*
 import com.jacobgb24.smashrandomizer.controller.CharacterSelectionAdapter
 import com.jacobgb24.smashrandomizer.R
-import com.jacobgb24.smashrandomizer.controller.MainActivity
-import com.jacobgb24.smashrandomizer.model.mainCharacterList
-import com.jacobgb24.smashrandomizer.model.setAllSelection
+import com.jacobgb24.smashrandomizer.model.activePool
 import kotlinx.android.synthetic.main.fragment_character_selection.view.*
 
 
@@ -39,12 +37,12 @@ class CharacterSelectionFragment : Fragment() {
         // Handle item selection
         return when (item.itemId) {
             R.id.menu_select_all -> {
-                mainCharacterList.setAllSelection(true)
+                activePool.setAllSelection(true)
                 adapter.notifyDataSetChanged()
                 true
             }
             R.id.menu_deselect_all -> {
-                mainCharacterList.setAllSelection(false)
+                activePool.setAllSelection(false)
                 adapter.notifyDataSetChanged()
                 true
             }
