@@ -9,14 +9,13 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.model.Character
-import com.jacobgb24.smashrandomizer.model.getSelected
-import com.jacobgb24.smashrandomizer.model.mainCharacterList
+import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.setHelp
 import kotlinx.android.synthetic.main.item_pool_character.view.*
 
 class PoolViewAdapter(private val context: Context): BaseAdapter() {
 
-    private val characterList = mainCharacterList.getSelected()
+    private val characterList = activePool.getSelected()
 
 
     override fun getCount(): Int {
