@@ -20,7 +20,7 @@ import java.util.*
 
 data class Pool(val name: String): Serializable {
     // Stripped down to just the appearance number and whether or not their in the pool.
-    private var characters: ArrayList<Pair<Number, Boolean>> = masterCharacterList.rawRepresentation()
+    private var characters: ArrayList<Pair<Number, Boolean>> = mainCharacterList.rawRepresentation()
 
     //----------------------------------------------------------------------------------------------------------------//
     // ACCESSORS                                                                                                      //
@@ -34,12 +34,12 @@ data class Pool(val name: String): Serializable {
             charNum = selected[Random().nextInt(selected.size)].first
         } while(current?.appearanceOrder?.equals(charNum) == true) // have to do == true to make current being null = false
 
-        return masterCharacterList.getByAppearance(charNum)
+        return mainCharacterList.getByAppearance(charNum)
     }
 
-    // Gets the Character from the masterCharacterList associated with this index
+    // Gets the Character from the mainCharacterList associated with this index
     operator fun get(index: Int): Character {
-        return masterCharacterList[index]
+        return mainCharacterList[index]
     }
 
     // checks if a character is "in" the pool
@@ -54,7 +54,7 @@ data class Pool(val name: String): Serializable {
 
     // Returns the list of Characters in the pool
     fun getSelected(): ArrayList<Character> {
-        return ArrayList(masterCharacterList.filter { contains(it) })
+        return ArrayList(mainCharacterList.filter { contains(it) })
     }
 
     //----------------------------------------------------------------------------------------------------------------//
