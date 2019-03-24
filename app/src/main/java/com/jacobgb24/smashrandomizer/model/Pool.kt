@@ -30,9 +30,14 @@ data class Pool(val name: String): Serializable {
     fun getNewRandom(current: Character?): Character {
         var charNum: Number
         val selected = getRawSelected()
-        do {
-            charNum = selected[Random().nextInt(selected.size)].first
-        } while(current?.appearanceOrder?.equals(charNum) == true) // have to do == true to make current being null = false
+
+        if (selected.size == 1){
+            charNum = selected[0].first
+        } else {
+            do {
+                charNum = selected[Random().nextInt(selected.size)].first
+            } while(current?.appearanceOrder?.equals(charNum) == true) // have to do == true to make current being null = false
+        }
 
         return mainCharacterList.getByAppearance(charNum)
     }
@@ -49,7 +54,7 @@ data class Pool(val name: String): Serializable {
 
     // Get the size of the pool.
     fun size(): Int {
-        return characters.size
+        return getSelected().size
     }
 
     // Returns the list of Characters in the pool
