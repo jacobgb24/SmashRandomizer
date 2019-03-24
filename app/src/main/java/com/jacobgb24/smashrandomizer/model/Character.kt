@@ -42,6 +42,11 @@ class Character(val name: String, val imageName: String, val context: Context, v
 
 }
 
+/**
+ * Gets a characters number according to their appearance in smash (the way they're sorted in game).
+ * Echo character are x.5.
+ * Returns a number which can be cast to int/
+ */
 fun Character.getAppearanceOrder(): Number {
     return when(imageName) {
         "bayonetta.webp" -> 63

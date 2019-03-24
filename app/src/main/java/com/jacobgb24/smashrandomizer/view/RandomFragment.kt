@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.*
@@ -43,6 +44,9 @@ class RandomFragment : Fragment() {
 
         view.button_random.setOnClickListener {
             setRandomChar()
+        }
+        view.button_iron_man.setOnClickListener {
+            Toast.makeText(activity, "Ironman not implemented yet", Toast.LENGTH_SHORT).show()
         }
         view.button_view_pool.setOnClickListener {
             (activity as MainActivity).addFragment(CurrentPoolFragment())

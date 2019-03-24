@@ -21,6 +21,8 @@ fun ArrayList<Character>.getNewRandom(current: Character?): Character {
 
 }
 
+fun ArrayList<Character>.setAllSelection(selected: Boolean) = forEach { it.isSelected = selected }
+
 fun ArrayList<Character>.sortByAppearance() = sortBy { it.appearanceOrder.toDouble() }
 
 
