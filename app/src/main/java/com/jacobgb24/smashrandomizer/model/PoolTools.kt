@@ -11,6 +11,9 @@ lateinit var mainCharacterList: ArrayList<Character>
 
 fun ArrayList<Character>.getSelected(): ArrayList<Character> = ArrayList(filter { character -> character.isSelected })
 
+// copies list with a shallow copy on each character. 
+fun ArrayList<Character>.copy(): ArrayList<Character> = ArrayList(mainCharacterList.map { it.copy() })
+
 fun ArrayList<Character>.getNewRandom(current: Character?): Character {
     var nextChar: Character
     val selected = getSelected()

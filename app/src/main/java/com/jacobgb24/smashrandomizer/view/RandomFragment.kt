@@ -27,8 +27,6 @@ class RandomFragment : Fragment() {
     var currentCharacter: Character? = null
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
