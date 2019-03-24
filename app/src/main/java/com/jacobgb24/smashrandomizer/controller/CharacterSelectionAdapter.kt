@@ -1,7 +1,6 @@
 package com.jacobgb24.smashrandomizer.controller
 
 import android.content.Context
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,18 +8,18 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.jacobgb24.smashrandomizer.model.Character
 import com.jacobgb24.smashrandomizer.R
-import com.jacobgb24.smashrandomizer.model.mainCharacterList
+import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.setHelp
 import kotlinx.android.synthetic.main.item_character_selection.view.*
 
 class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), CharacterClickHandler {
 
     override fun getCount(): Int {
-        return mainCharacterList.size
+        return activePool.size()
     }
 
     override fun getItem(position: Int): Any {
-        return mainCharacterList[position]
+        return activePool[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -32,8 +31,9 @@ class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), Ch
 
         fun bind(pos: Int, character: Character, handler: CharacterClickHandler) {
             with(image) {
-                setHelp("${character.name} is ${if (character.isSelected) "" else "not"} selected")
-                isSelected = character.isSelected
+                val hasChar = activePool.contains(character)
+                setHelp("${character.name} is ${if (hasChar) "" else "not"} selected")
+                isSelected = hasChar
                 setOnClickListener {
                     handler.onClick(pos)
                 }
@@ -43,7 +43,7 @@ class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), Ch
     }
 
     override fun onClick(pos: Int) {
-        mainCharacterList[pos].toggle()
+        activePool.toggle(pos)
         notifyDataSetChanged()
     }
 
@@ -58,7 +58,7 @@ class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), Ch
         else {
             viewHolder = convertView.tag as CharacterViewHolder
         }
-        viewHolder.bind(position, mainCharacterList[position], this)
+        viewHolder.bind(position, activePool[position], this)
         return viewHolder.v
     }
 
