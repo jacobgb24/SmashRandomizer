@@ -8,9 +8,11 @@ import android.text.SpannableStringBuilder
 import android.text.style.RelativeSizeSpan
 import android.text.style.SuperscriptSpan
 import android.util.Log
+import java.io.Serializable
 import kotlin.math.floor
 
-class Character(val name: String, val imageName: String, val context: Context, var isSelected: Boolean = true) {
+class Character(val name: String, val imageName: String, val context: Context) {
+
     // use these to load images via Glide.with(context).load(character.portraitUri).into(view)
     val iconUri: Uri = Uri.parse("file:///android_asset/icons/$imageName")
     val portraitUri: Uri = Uri.parse("file:///android_asset/portraits/$imageName")
@@ -36,12 +38,9 @@ class Character(val name: String, val imageName: String, val context: Context, v
 
     }
 
-    fun toggle() {
-        isSelected = !isSelected
-    }
 
     fun copy(): Character {
-        return Character(name, imageName, context, isSelected)
+        return Character(name, imageName, context)
     }
 
 }
