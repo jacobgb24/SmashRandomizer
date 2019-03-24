@@ -9,17 +9,18 @@ import android.widget.ImageView
 import com.jacobgb24.smashrandomizer.model.Character
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.model.activePool
+import com.jacobgb24.smashrandomizer.model.mainCharacterList
 import com.jacobgb24.smashrandomizer.setHelp
 import kotlinx.android.synthetic.main.item_character_selection.view.*
 
 class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), CharacterClickHandler {
 
     override fun getCount(): Int {
-        return activePool.size()
+        return mainCharacterList.size
     }
 
     override fun getItem(position: Int): Any {
-        return activePool[position]
+        return mainCharacterList[position]
     }
 
     override fun getItemId(position: Int): Long {
