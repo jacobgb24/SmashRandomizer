@@ -40,6 +40,10 @@ class Character(val name: String, val imageName: String, val context: Context, v
         isSelected = !isSelected
     }
 
+    fun copy(): Character {
+        return Character(name, imageName, context, isSelected)
+    }
+
 }
 
 /**
