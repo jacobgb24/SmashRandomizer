@@ -7,10 +7,9 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.util.Log
 import android.view.MenuItem
-import com.jacobgb24.smashrandomizer.model.generateCharacters
-import com.jacobgb24.smashrandomizer.model.loadPools
-import com.jacobgb24.smashrandomizer.model.mainCharacterList
-import com.jacobgb24.smashrandomizer.model.savePools
+import android.widget.Toast
+import com.jacobgb24.smashrandomizer.model.*
+import com.jacobgb24.smashrandomizer.view.CharacterSelectionFragment
 import com.jacobgb24.smashrandomizer.view.RandomFragment
 
 
@@ -68,7 +67,15 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         Log.e(TAG, "onBackCalled")
         if (supportFragmentManager.backStackEntryCount > 0) {
-            removeFragment()
+
+            // Check if selecting characters.
+            val fragments = supportFragmentManager.fragments
+
+            if (fragments[fragments.size-1] is CharacterSelectionFragment && activePool.size() == 0) {
+                Toast.makeText(this, "You've gotta play as someone, dude.", Toast.LENGTH_SHORT).show()
+            } else {
+                removeFragment()
+            }
         }
         else {
             super.onBackPressed()
