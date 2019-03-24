@@ -7,11 +7,10 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.util.Log
 import android.view.MenuItem
-import com.jacobgb24.smashrandomizer.*
 import com.jacobgb24.smashrandomizer.model.generateCharacters
-import com.jacobgb24.smashrandomizer.model.loadSelection
+import com.jacobgb24.smashrandomizer.model.loadPools
 import com.jacobgb24.smashrandomizer.model.mainCharacterList
-import com.jacobgb24.smashrandomizer.model.saveSelections
+import com.jacobgb24.smashrandomizer.model.savePools
 import com.jacobgb24.smashrandomizer.view.RandomFragment
 
 
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainCharacterList = generateCharacters(this)
-        loadSelection(this)
+        loadPools(this)
 
 
         setBaseFragment()
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        saveSelections(this)
+        savePools(this)
     }
 
     private fun setBaseFragment() {
