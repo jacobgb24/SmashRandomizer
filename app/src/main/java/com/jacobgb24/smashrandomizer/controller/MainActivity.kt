@@ -70,12 +70,18 @@ class MainActivity : AppCompatActivity() {
 
             // Check if selecting characters.
             val fragments = supportFragmentManager.fragments
+            val backFragment = fragments[fragments.size-1]
 
-            if (fragments[fragments.size-1] is CharacterSelectionFragment && activePool.size() == 0) {
-                Toast.makeText(this, "You've gotta play as someone, dude.", Toast.LENGTH_SHORT).show()
-            } else {
-                removeFragment()
+            if (backFragment is CharacterSelectionFragment) {
+                if (activePool.size() == 0) {
+                    Toast.makeText(this, "You've gotta play as someone, dude.", Toast.LENGTH_SHORT).show()
+                    return
+                } else {
+                    savePools(this)
+                }
             }
+
+            removeFragment()
         }
         else {
             super.onBackPressed()
