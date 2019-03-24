@@ -7,4 +7,5 @@
     <string name="begin_ironman">Begin Ironman</string>
     <string name="view_pool">View Pool</string>
     <string name="new_random_character">New Random Character</string>
+    <string name="edit_pool">Edit the active pool</string>
 </resources>
