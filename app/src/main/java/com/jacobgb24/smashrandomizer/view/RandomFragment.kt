@@ -1,11 +1,5 @@
 package com.jacobgb24.smashrandomizer.view
 
-import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.drawable.RippleDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -16,8 +10,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.*
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.Character
-import com.jacobgb24.smashrandomizer.model.getNewRandom
-import com.jacobgb24.smashrandomizer.model.mainCharacterList
+import com.jacobgb24.smashrandomizer.model.activePool
 import kotlinx.android.synthetic.main.fragment_random.*
 import kotlinx.android.synthetic.main.fragment_random.view.*
 
@@ -62,7 +55,7 @@ class RandomFragment : Fragment() {
 
 
     private fun setRandomChar() {
-        currentCharacter = mainCharacterList.getNewRandom(currentCharacter)
+        currentCharacter = activePool.getNewRandom(currentCharacter)
         Glide.with(this).load(currentCharacter!!.portraitUri).override(1200, 1200)
             .transition(DrawableTransitionOptions.withCrossFade()).into(image_character_random)
         text_character_name_random.text = currentCharacter!!.name
