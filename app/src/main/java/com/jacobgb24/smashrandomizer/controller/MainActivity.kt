@@ -57,45 +57,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun removeFragment() {
-        supportFragmentManager.popBackStackImmediate()
-        Log.e(TAG, "removed frag. count ${supportFragmentManager.backStackEntryCount}")
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStackImmediate()
+            Log.e(TAG, "removed frag. count ${supportFragmentManager.backStackEntryCount}")
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+            }
         }
     }
 
     override fun onBackPressed() {
         Log.e(TAG, "onBackCalled")
-        if (supportFragmentManager.backStackEntryCount > 0) {
 
-            // Check if selecting characters.
-            val fragments = supportFragmentManager.fragments
-            val backFragment = fragments[fragments.size-1]
+        val fragment = supportFragmentManager.findFragmentById(android.R.id.content)
 
-            if (backFragment is CharacterSelectionFragment) {
-                if (activePool.size() == 0) {
-                    Toast.makeText(this, "You've gotta play as someone, dude.", Toast.LENGTH_SHORT).show()
-                    return
-                } else {
-                    savePools(this)
-                }
+        // if the fragment doesn't implement FragOnBackPressed or it returned false from that fun
+        if ((fragment as? FragOnBackPressed)?.onBackPressed() != true) {
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                removeFragment()
             }
+            else {
+                super.onBackPressed()
+            }
+        }
 
-            removeFragment()
-        }
-        else {
-            super.onBackPressed()
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        Log.e("MENU", item.toString())
+        Log.e(TAG, "Menu: ${item.toString()} clicked")
         when(item!!.itemId) {
             android.R.id.home -> onBackPressed()
             else -> return super.onOptionsItemSelected(item)
         }
-        return true
-
+        return super.onOptionsItemSelected(item)
     }
 
 }
@@ -106,6 +100,14 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Fragmen
     beginTransaction().func().commit()
 }
 
+
+/**
+ * A Fragment may implement this interface to have control over the back button.
+ * Implementation is optional otherwise
+ */
+interface FragOnBackPressed {
+    fun onBackPressed(): Boolean
+}
 
 
 

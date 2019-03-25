@@ -56,7 +56,9 @@
             android:layout_gravity="start"
             android:tooltipText="@string/view_pool"
             android:contentDescription="@string/view_pool"
-            android:background="@drawable/butt_pool_selector"
+            android:src="@drawable/butt_pool_selector"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
             android:layout_alignParentStart="true"
             tools:ignore="UnusedAttribute"
             android:id="@+id/button_view_pool"/>
@@ -67,7 +69,9 @@
             android:layout_height="64dp"
             android:tooltipText="@string/begin_ironman"
             android:contentDescription="@string/begin_ironman"
-            android:background="@drawable/butt_ironman_selector"
+            android:src="@drawable/butt_ironman_selector"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
             android:layout_alignParentEnd="true"
             tools:ignore="UnusedAttribute"
             android:id="@+id/button_iron_man"/>
@@ -78,7 +82,9 @@
         android:layout_height="72dp"
         android:tooltipText="@string/new_random_character"
         android:contentDescription="@string/new_random_character"
-        android:background="@drawable/butt_random_selector"
+        android:src="@drawable/butt_random_selector"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
         tools:ignore="UnusedAttribute"
         android:id="@+id/button_random"/>
