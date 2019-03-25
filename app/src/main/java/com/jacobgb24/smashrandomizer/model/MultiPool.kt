@@ -4,6 +4,7 @@ import android.content.Context
 import com.jacobgb24.smashrandomizer.R
 import kotlin.collections.ArrayList
 import java.io.*
+import java.lang.Exception
 
 /** State and Logic for handling multiple customized pools
  *
@@ -75,7 +76,7 @@ fun loadPools(context: Context) {
 
         input.close()
         fileIn.close()
-    } catch (e: FileNotFoundException) {
+    } catch (e: Exception) {
         pools = ArrayList()
         newPool("Default")
     }

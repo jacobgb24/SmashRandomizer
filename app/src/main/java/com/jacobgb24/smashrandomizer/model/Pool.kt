@@ -2,6 +2,7 @@ package com.jacobgb24.smashrandomizer.model
 
 import java.io.Serializable
 import java.util.*
+import kotlin.collections.ArrayList
 
 /** Pool Class. Used to manage custom defined pools.
  *
@@ -18,7 +19,7 @@ import java.util.*
  * + sortByAppearance()
  */
 
-data class Pool(val name: String): Serializable {
+data class Pool(var name: String): Serializable {
     // Stripped down to just the appearance number and whether or not their in the pool.
     private var characters: ArrayList<Pair<Number, Boolean>> = mainCharacterList.rawRepresentation()
 
@@ -88,5 +89,11 @@ data class Pool(val name: String): Serializable {
     // Returns a list of character numbers and whether that character is in the pool.
     private fun getRawSelected(): ArrayList<Pair<Number, Boolean>> {
         return ArrayList(characters.filter { it.second })
+    }
+
+    fun copy(): Pool {
+        var newPool = Pool(name)
+        newPool.characters = ArrayList(characters.toMutableList())
+        return newPool
     }
 }

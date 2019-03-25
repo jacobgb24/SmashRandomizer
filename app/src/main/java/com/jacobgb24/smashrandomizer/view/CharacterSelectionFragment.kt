@@ -1,21 +1,31 @@
 package com.jacobgb24.smashrandomizer.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.*
+import android.widget.Toast
 import com.jacobgb24.smashrandomizer.controller.CharacterSelectionAdapter
 import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.addRippleFG
+import com.jacobgb24.smashrandomizer.controller.FragOnBackPressed
+import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.activePool
+import com.jacobgb24.smashrandomizer.model.savePools
 import kotlinx.android.synthetic.main.fragment_character_selection.view.*
 
 
-class CharacterSelectionFragment : Fragment() {
+class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
 
+    private val TAG = "CharacterSelectionFrag"
     private lateinit var adapter: CharacterSelectionAdapter
+    private var activePoolCopy = activePool.copy()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
     }
 
     // Create view hierarchy controlled by fragment.
@@ -24,6 +34,10 @@ class CharacterSelectionFragment : Fragment() {
         adapter = CharacterSelectionAdapter(view.context)
         view.grid_character_selection.adapter = adapter
 
+        view.button_pool_save.addRippleFG()
+        view.button_pool_save.setOnClickListener {
+            attemptSave()
+        }
         return view
 
     }
@@ -31,6 +45,35 @@ class CharacterSelectionFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater!!.inflate(R.menu.selection_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun showSaveAlert() {
+        val builder = AlertDialog.Builder(activity)
+        with(builder) {
+            setTitle("Cancel Pool Edits?")
+            setMessage("Leaving without saving will remove the changes you have just made.")
+            setPositiveButton("Leave") {dialog, which ->
+                activePool = activePoolCopy
+                (activity as MainActivity).removeFragment()
+                dialog.dismiss()
+            }
+            setNegativeButton("Keep Editing") {dialog, which ->
+                dialog.dismiss()
+            }
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun attemptSave() {
+        if (activePool.getSelected().size < 2) {
+            Toast.makeText(activity, "A pool must have at least two selections", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Toast.makeText(activity, "Pool Saved", Toast.LENGTH_SHORT).show()
+            savePools(activity!!)
+            (activity as MainActivity).removeFragment()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -46,8 +89,15 @@ class CharacterSelectionFragment : Fragment() {
                 adapter.notifyDataSetChanged()
                 true
             }
+           // up button handled by main which calls onBackPressed below
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onBackPressed(): Boolean {
+        Log.e(TAG, "onBack Called")
+        showSaveAlert()
+        return true
     }
 
 }
