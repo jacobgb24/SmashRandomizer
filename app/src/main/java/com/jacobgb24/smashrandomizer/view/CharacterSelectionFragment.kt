@@ -1,11 +1,14 @@
 package com.jacobgb24.smashrandomizer.view
 
 import android.app.AlertDialog
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.*
+import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.jacobgb24.smashrandomizer.controller.CharacterSelectionAdapter
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.addRippleFG
@@ -38,9 +41,15 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
         view.button_pool_save.setOnClickListener {
             attemptSave()
         }
+
+        view.button_selection_banner.setOnClickListener {
+            view.banner_selection_tooltip.visibility = View.GONE
+        }
+
         return view
 
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater!!.inflate(R.menu.selection_menu, menu)
@@ -52,12 +61,12 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
         with(builder) {
             setTitle("Cancel Pool Edits?")
             setMessage("Leaving without saving will remove the changes you have just made.")
-            setPositiveButton("Leave") {dialog, which ->
+            setPositiveButton("Leave") {dialog, _ ->
                 activePool = activePoolCopy
                 (activity as MainActivity).removeFragment()
                 dialog.dismiss()
             }
-            setNegativeButton("Keep Editing") {dialog, which ->
+            setNegativeButton("Keep Editing") {dialog, _ ->
                 dialog.dismiss()
             }
         }

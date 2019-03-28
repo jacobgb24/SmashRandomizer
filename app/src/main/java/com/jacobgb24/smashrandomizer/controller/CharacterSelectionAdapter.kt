@@ -32,9 +32,8 @@ class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), Ch
 
         fun bind(pos: Int, character: Character, handler: CharacterClickHandler) {
             with(image) {
-                val hasChar = activePool.contains(character)
-                setHelp("${character.name} is ${if (hasChar) "" else "not"} selected")
-                isSelected = hasChar
+                setHelp(character.name)
+                isSelected = activePool.contains(character)
                 setOnClickListener {
                     handler.onClick(pos)
                 }
