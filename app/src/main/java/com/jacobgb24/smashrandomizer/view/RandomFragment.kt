@@ -42,25 +42,19 @@ class RandomFragment : Fragment() {
         view.button_view_pool.setOnClickListener {
             (activity as MainActivity).addFragment(CurrentPoolFragment())
         }
+        setRandomChar(view) // have to manually pass the view since this function sets the fragment view at return
 
         return view
 
     }
 
-    override fun onStart() {
-        setRandomChar()
-        super.onStart()
-    }
-
-
-
-    private fun setRandomChar() {
+    private fun setRandomChar(view: View = this.view!!) {
         currentCharacter = activePool.getNewRandom(currentCharacter)
         Glide.with(this).load(currentCharacter!!.portraitUri).override(1200, 1200)
-            .transition(DrawableTransitionOptions.withCrossFade()).into(image_character_random)
-        text_character_name_random.text = currentCharacter!!.name
-        text_character_number_random.text = currentCharacter!!.getOrderString()
-        image_character_random.setHelp("Current Character: ${currentCharacter!!.name}")
+            .transition(DrawableTransitionOptions.withCrossFade()).into(view.image_character_random)
+        view.text_character_name_random.text = currentCharacter!!.name
+        view.text_character_number_random.text = currentCharacter!!.getOrderString()
+        view.image_character_random.setHelp("Current Character: ${currentCharacter!!.name}")
     }
 
 
