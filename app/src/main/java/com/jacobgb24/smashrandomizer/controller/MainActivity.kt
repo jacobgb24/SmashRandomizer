@@ -10,6 +10,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.jacobgb24.smashrandomizer.model.*
 import com.jacobgb24.smashrandomizer.view.CharacterSelectionFragment
+import com.jacobgb24.smashrandomizer.model.currentCharacter
+import com.jacobgb24.smashrandomizer.model.loadDefaultCharacter
 import com.jacobgb24.smashrandomizer.view.RandomFragment
 
 
@@ -26,11 +28,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainCharacterList = generateCharacters(this)
         loadPools(this)
-
-
+        currentCharacter = loadDefaultCharacter(this)
+        Log.e(TAG, "Current Character URI:"+ currentCharacter.portraitUri)
         setBaseFragment()
-
-
     }
 
 
