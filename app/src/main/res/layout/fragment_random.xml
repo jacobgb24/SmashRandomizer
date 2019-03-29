@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="6dp"
-            android:id="@+id/character_number">
+            android:layout_above="@+id/pool_buttons"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/character_info">
 
+        <!--android:layout_above="@id/image_character_random"/>-->
         <TextView
                 android:layout_height="36dp"
                 android:layout_width="72dp"
@@ -24,52 +25,32 @@
                 android:textSize="24dp"
                 android:gravity="center_vertical"
                 tools:ignore="SpUsage"
+                android:layout_alignTop="@id/image_character_random"
                 android:id="@+id/text_character_number_random"
                 android:layout_marginStart="0dp"/>
-
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/css_font"
-                android:textSize="28sp"
-                android:textColor="@android:color/black"
-                android:gravity="center"
-                android:includeFontPadding="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="6dp"
-                android:id="@+id/text_character_name_random"/>
-
-        <!--
-        android:layout_toEndOf="@id/text_character_number_random"
-        -->
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/pool_buttons"
-            android:gravity="top"
-            android:id="@+id/character_info"
-            android:layout_below="@id/character_number">
-
-        <!--android:layout_above="@id/image_character_random"/>-->
 
         <ImageView
                 android:maxWidth="324dp"
                 android:layout_width="match_parent"
                 android:layout_height="324dp"
-
-                android:layout_marginStart="48dp"
-                android:layout_marginEnd="48dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginTop="32dp"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/image_character_random"
                 android:layout_alignParentTop="true"
                 tools:ignore="contentDescription"/>
 
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/css_font"
+                android:textSize="36sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_below="@id/image_character_random"
+                android:id="@+id/text_character_name_random"/>
 
     </RelativeLayout>
 
@@ -113,9 +94,9 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/css_font"
-                    android:textSize="24sp"
-                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/css_font_light"
+                    android:textSize="22sp"
+                    android:textColor="@color/darkText"
                     android:textAlignment="center"
                     android:id="@+id/title_active_pool"
                     android:text="@string/title_pool"/>
@@ -123,9 +104,9 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/css_font"
-                    android:textSize="24sp"
-                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/css_font_light"
+                    android:textSize="22sp"
+                    android:textColor="@color/darkText"
                     android:textAlignment="center"
                     android:id="@+id/text_pool_name"/>
 

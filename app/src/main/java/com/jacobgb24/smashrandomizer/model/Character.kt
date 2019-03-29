@@ -11,14 +11,25 @@ import android.util.Log
 import java.io.Serializable
 import kotlin.math.floor
 
+
+lateinit var currentCharacter: Character
+
 class Character(val name: String, val imageName: String, val context: Context) {
 
     // use these to load images via Glide.with(context).load(character.portraitUri).into(view)
     val iconUri: Uri = Uri.parse("file:///android_asset/icons/$imageName")
-    val portraitUri: Uri = Uri.parse("file:///android_asset/portraits/$imageName")
+    var portraitUri: Uri = Uri.parse("file:///android_asset/portraits/$imageName")
+    var appearanceOrder = getAppearanceOrder()
 
-    val appearanceOrder = getAppearanceOrder()
     fun getOrderString(): SpannableStringBuilder  {
+
+        if (appearanceOrder == -1) {
+            // Default On-Start Character
+            val build = SpannableStringBuilder()
+            build.append("?")
+            return build
+        }
+
         val build = SpannableStringBuilder("${floor(appearanceOrder.toDouble()).toInt()}")
         if (appearanceOrder.toDouble() % 1 != 0.0) {
             build.append("ε")
@@ -44,6 +55,19 @@ class Character(val name: String, val imageName: String, val context: Context) {
     }
 
 }
+
+/**
+ * Create a default "?" character object that loads on application start.
+ */
+fun loadDefaultCharacter(context: Context): Character {
+    // get the default startup image
+    val defaultImage = Uri.parse("file:///android_asset/startup/temp.jpg")
+    val char = Character("", "", context)
+    char.appearanceOrder = -1
+    char.portraitUri = defaultImage
+    return char
+}
+
 
 /**
  * Gets a characters number according to their appearance in smash (the way they're sorted in game).
