@@ -11,14 +11,13 @@ import com.jacobgb24.smashrandomizer.*
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.Character
 import com.jacobgb24.smashrandomizer.model.activePool
+import com.jacobgb24.smashrandomizer.model.currentCharacter
+import com.jacobgb24.smashrandomizer.model.pools
 import kotlinx.android.synthetic.main.fragment_random.*
 import kotlinx.android.synthetic.main.fragment_random.view.*
 
 
 class RandomFragment : Fragment() {
-
-    var currentCharacter: Character? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +41,11 @@ class RandomFragment : Fragment() {
         view.button_view_pool.setOnClickListener {
             (activity as MainActivity).addFragment(CurrentPoolFragment())
         }
-        setRandomChar(view) // have to manually pass the view since this function sets the fragment view at return
+
+        view.text_pool_name.text = activePool.name
+        // setRandomChar(view) // have to manually pass the view since this function sets the fragment view at return
+
+        setCurrentChar(view)
 
         return view
 
@@ -50,13 +53,17 @@ class RandomFragment : Fragment() {
 
     private fun setRandomChar(view: View = this.view!!) {
         currentCharacter = activePool.getNewRandom(currentCharacter)
-        Glide.with(this).load(currentCharacter!!.portraitUri).override(1200, 1200)
-            .transition(DrawableTransitionOptions.withCrossFade()).into(view.image_character_random)
-        view.text_character_name_random.text = currentCharacter!!.name
-        view.text_character_number_random.text = currentCharacter!!.getOrderString()
-        view.image_character_random.setHelp("Current Character: ${currentCharacter!!.name}")
+        setCurrentChar(view)
     }
 
+
+    private fun setCurrentChar(view: View = this.view!!) {
+        Glide.with(this).load(currentCharacter.portraitUri).override(1200, 1200)
+            .transition(DrawableTransitionOptions.withCrossFade()).into(view.image_character_random)
+        view.text_character_name_random.text = currentCharacter.name
+        view.text_character_number_random.text = currentCharacter.getOrderString()
+        view.image_character_random.setHelp("Current Character: ${currentCharacter.name}")
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater!!.inflate(R.menu.main_menu, menu)

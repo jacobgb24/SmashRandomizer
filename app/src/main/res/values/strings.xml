@@ -8,4 +8,5 @@
     <string name="view_pool">View Pool</string>
     <string name="new_random_character">New Random Character</string>
     <string name="edit_pool">Edit the active pool</string>
+    <string name="title_pool">Pool:\u0020</string>
 </resources>
