@@ -2,7 +2,6 @@ package com.jacobgb24.smashrandomizer.model
 
 import android.content.Context
 
-
 /** State and Logic for the Master Character List.
  *
  * Variables:
@@ -57,6 +56,7 @@ fun generateCharacters(context: Context): ArrayList<Character> {
             "bowserJr.webp" -> "Bowser Jr."
             "mrGame&Watch.webp" -> "Mr. Game & Watch"
             "pacman.webp" -> "PAC-MAN"
+            "rosalina&Luma.webp" -> "Rosalina & Luma"
             "pokemonTrainer.webp" -> "Pokémon Trainer"
             else -> getNameFromPath(image)
         }
