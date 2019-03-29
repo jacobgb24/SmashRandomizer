@@ -95,8 +95,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/css_font_light"
-                    android:textSize="24sp"
-                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textColor="@color/darkText"
                     android:textAlignment="center"
                     android:id="@+id/title_active_pool"
                     android:text="@string/title_pool"/>
@@ -105,8 +105,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/css_font_light"
-                    android:textSize="24sp"
-                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textColor="@color/darkText"
                     android:textAlignment="center"
                     android:id="@+id/text_pool_name"/>
 
