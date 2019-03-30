@@ -15,6 +15,8 @@ import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.FragOnBackPressed
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.activePool
+import com.jacobgb24.smashrandomizer.model.deletePool
+import com.jacobgb24.smashrandomizer.model.pools
 import com.jacobgb24.smashrandomizer.model.savePools
 import kotlinx.android.synthetic.main.fragment_character_selection.view.*
 
@@ -62,7 +64,12 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
             setTitle("Cancel Pool Edits?")
             setMessage("Leaving without saving will remove the changes you have just made.")
             setPositiveButton("Leave") {dialog, _ ->
-                activePool = activePoolCopy
+                if (activePoolCopy.size() == 0) { // this means a new pool since otherwise activePool.size > 1
+                    deletePool(activePool)
+                }
+                else {
+                    activePool = activePoolCopy.copy()
+                }
                 (activity as MainActivity).removeFragment()
                 dialog.dismiss()
             }

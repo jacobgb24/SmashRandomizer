@@ -25,8 +25,9 @@ lateinit var pools: ArrayList<Pool>
 lateinit var activePool: Pool
 
 
-fun newPool(name: String) {
+fun newPool(name: String, baseSelection: Boolean = true) {
     val pool = Pool(name)
+    pool.setAllSelection(baseSelection)
     activePool = pool
     pools.add(pool)
 }
@@ -41,6 +42,16 @@ fun deletePool(index: Int) {
         }
     }
     pools.removeAt(index)
+}
+
+fun deletePool(pool: Pool) {
+    pools.remove(pool)
+    if(activePool == pool) {
+        if (pools.size == 0) {
+            pools.add(Pool("Default"))
+        }
+        selectPool(0)
+    }
 }
 
 

@@ -91,9 +91,24 @@ data class Pool(var name: String): Serializable {
         return ArrayList(characters.filter { it.second })
     }
 
+
+
     fun copy(): Pool {
         var newPool = Pool(name)
         newPool.characters = ArrayList(characters.toMutableList())
         return newPool
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Pool
+
+        if (name != other.name) return false
+        if (characters != other.characters) return false
+
+        return true
+    }
+
 }
