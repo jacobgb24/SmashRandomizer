@@ -7,6 +7,7 @@ import android.graphics.drawable.RippleDrawable
 import android.os.Build
 import android.support.v7.widget.TooltipCompat
 import android.util.Log
+import android.widget.GridView
 import android.widget.ImageButton
 import android.widget.ImageView
 
@@ -33,3 +34,4 @@ fun ImageButton.addRippleFG(color: String = "#44DEDEDE") {
     val ripple = RippleDrawable(ColorStateList.valueOf(Color.parseColor(color)), null, drawable)
     foreground = ripple
 }
+

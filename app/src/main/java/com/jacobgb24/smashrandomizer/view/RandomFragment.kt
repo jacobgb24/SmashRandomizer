@@ -9,11 +9,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.*
 import com.jacobgb24.smashrandomizer.controller.MainActivity
-import com.jacobgb24.smashrandomizer.model.Character
 import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.model.currentCharacter
-import com.jacobgb24.smashrandomizer.model.pools
-import kotlinx.android.synthetic.main.fragment_random.*
 import kotlinx.android.synthetic.main.fragment_random.view.*
 
 
@@ -39,7 +36,7 @@ class RandomFragment : Fragment() {
             Toast.makeText(activity, "Ironman not implemented yet", Toast.LENGTH_SHORT).show()
         }
         view.button_view_pool.setOnClickListener {
-            (activity as MainActivity).addFragment(CurrentPoolFragment())
+            (activity as MainActivity).addFragment(PoolListFragment())
         }
 
         view.text_pool_name.text = activePool.name
