@@ -47,12 +47,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun addFragment(fragment: Fragment, tag: String? = null) {
+    fun addFragment(fragment: Fragment, tag: String? = null, trueReplace: Boolean = false) {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportFragmentManager.inTransaction {
-            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(android.R.id.content, fragment, tag).addToBackStack(tag)
+            if (trueReplace) {
+                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                    .replace(android.R.id.content, fragment, tag)
+            }
+            else {
+                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                    .replace(android.R.id.content, fragment, tag).addToBackStack(tag)
+            }
         }
     }
 

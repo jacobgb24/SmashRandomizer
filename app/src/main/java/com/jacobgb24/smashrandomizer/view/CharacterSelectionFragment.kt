@@ -38,6 +38,7 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
         val view = inflater.inflate(R.layout.fragment_character_selection, container, false)
         adapter = CharacterSelectionAdapter(view.context)
         view.grid_character_selection.adapter = adapter
+        (activity as MainActivity).supportActionBar!!.title = "Edit Pool"
 
         view.button_pool_save.addRippleFG()
         view.button_pool_save.setOnClickListener {
