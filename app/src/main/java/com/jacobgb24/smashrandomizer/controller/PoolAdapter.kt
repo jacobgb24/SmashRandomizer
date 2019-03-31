@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.ImageView
 import android.widget.TextView
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.model.Pool
@@ -42,7 +40,7 @@ class PoolAdapter(private val context: Context): BaseAdapter(), PoolClickHandler
         fun bind(pool: Pool, handler: PoolClickHandler, pos: Int) {
             name.text = pool.name
             size.text = "Size: ${pool.size()}"
-            charList.adapter = PoolCharactersAdapter(v.context, pool.getSelected())
+            charList.adapter = CharactersAdapter(v.context, pool.getSelected())
             if (pool != activePool) {
                 charList.visibility = View.GONE
             }

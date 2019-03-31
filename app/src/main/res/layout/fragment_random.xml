@@ -72,7 +72,7 @@
             android:layout_gravity="start"
             android:tooltipText="@string/view_pool"
             android:contentDescription="@string/view_pool"
-            android:src="@drawable/butt_pool_selector"
+            android:src="@drawable/butt_view_pool_selector"
             android:scaleType="fitXY"
             android:background="@android:color/transparent"
             android:layout_alignParentStart="true"

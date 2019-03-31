@@ -37,6 +37,8 @@ class PoolListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_pool_list, container, false)
         adapter = PoolAdapter(view.context)
         view.list_pool.adapter = adapter
+        (activity as MainActivity).supportActionBar!!.title = "Pools"
+
 //
 //        view.button_change_pool.setOnClickListener {
 //            newPoolDialog()

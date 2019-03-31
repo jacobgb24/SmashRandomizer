@@ -24,7 +24,8 @@ class RandomFragment : Fragment() {
     // Create view hierarchy controlled by fragment.
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_random, container, false)
-        Log.e("RandomFrag", "onCreateView")
+        (activity as MainActivity).supportActionBar!!.title = "Smash Randomizer"
+
         view.button_random.addRippleFG()
         view.button_iron_man.addRippleFG()
         view.button_view_pool.addRippleFG()
@@ -33,14 +34,13 @@ class RandomFragment : Fragment() {
             setRandomChar()
         }
         view.button_iron_man.setOnClickListener {
-            Toast.makeText(activity, "Ironman not implemented yet", Toast.LENGTH_SHORT).show()
+            (activity as MainActivity).addFragment(IronmanStartupFragment())
         }
         view.button_view_pool.setOnClickListener {
             (activity as MainActivity).addFragment(PoolListFragment())
         }
 
         view.text_pool_name.text = activePool.name
-        // setRandomChar(view) // have to manually pass the view since this function sets the fragment view at return
 
         setCurrentChar(view)
 

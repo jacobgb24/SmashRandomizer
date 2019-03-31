@@ -20,6 +20,7 @@ class PreferenceFragment: PreferenceFragmentCompat() {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 //        view!!.setBackgroundColor(resources.getColor(android.R.color.background_light ))
         setHasOptionsMenu(true)
+        (activity as MainActivity).supportActionBar!!.title = "Settings"
 
         return view
     }
