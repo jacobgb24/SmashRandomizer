@@ -61,7 +61,7 @@ class Character(val name: String, val imageName: String, val context: Context) {
  */
 fun loadDefaultCharacter(context: Context): Character {
     // get the default startup image
-    val defaultImage = Uri.parse("file:///android_asset/startup/temp.jpg")
+    val defaultImage = Uri.parse("file:///android_asset/startup/starter.webp")
     val char = Character("", "", context)
     char.appearanceOrder = -1
     char.portraitUri = defaultImage
