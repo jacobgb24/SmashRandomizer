@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.controller.PoolAdapter
@@ -13,6 +14,7 @@ import com.jacobgb24.smashrandomizer.model.Pool
 import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.model.newPool
 import com.jacobgb24.smashrandomizer.model.pools
+import com.leinardi.android.speeddial.SpeedDialActionItem
 import kotlinx.android.synthetic.main.dialog_new_pool.view.*
 import kotlinx.android.synthetic.main.fragment_pool_list.view.*
 
@@ -35,14 +37,15 @@ class PoolListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_pool_list, container, false)
         adapter = PoolAdapter(view.context)
         view.list_pool.adapter = adapter
+//
+//        view.button_change_pool.setOnClickListener {
+//            newPoolDialog()
+//        }
+        setUpFAB(view)
 
-        view.button_change_pool.setOnClickListener {
-            newPoolDialog()
-        }
-
-        view.button_pool_edit.setOnClickListener {
-            (activity as MainActivity).addFragment(CharacterSelectionFragment())
-        }
+//        view.button_pool_edit.setOnClickListener {
+//            (activity as MainActivity).addFragment(CharacterSelectionFragment())
+//        }
 
         return view
 
@@ -71,6 +74,21 @@ class PoolListFragment : Fragment() {
         }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    fun setUpFAB(view: View) {
+        val fab = view.fab_pool
+        fab.addActionItem(SpeedDialActionItem.Builder(R.id.fab_rename, R.drawable.ic_butt_ironman_down).create())
+
+        fab.setOnActionSelectedListener {
+            when(id) {
+                R.id.fab_rename -> {
+                    Toast.makeText(activity, "CLICKED RENAME", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
 }
