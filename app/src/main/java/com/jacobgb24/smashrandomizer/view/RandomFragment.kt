@@ -2,15 +2,14 @@ package com.jacobgb24.smashrandomizer.view
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.*
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.*
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.model.currentCharacter
+import com.jacobgb24.smashrandomizer.view.ironman.IronmanStartupFragment
 import kotlinx.android.synthetic.main.fragment_random.view.*
 
 

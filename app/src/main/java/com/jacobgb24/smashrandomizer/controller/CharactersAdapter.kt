@@ -13,7 +13,7 @@ import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.setHelp
 import kotlinx.android.synthetic.main.item_pool_character.view.*
 
-class CharactersAdapter(private val context: Context, private val characterList: ArrayList<Character>): BaseAdapter() {
+class CharactersAdapter(private val context: Context, var characterList: ArrayList<Character>): BaseAdapter() {
 
     override fun getCount(): Int {
         return characterList.size
