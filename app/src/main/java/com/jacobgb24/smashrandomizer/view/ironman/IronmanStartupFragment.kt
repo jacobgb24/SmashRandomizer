@@ -1,18 +1,15 @@
-package com.jacobgb24.smashrandomizer.view
+package com.jacobgb24.smashrandomizer.view.ironman
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import com.jacobgb24.smashrandomizer.R
-import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.activePool
+import com.jacobgb24.smashrandomizer.view.PoolListFragment
 import kotlinx.android.synthetic.main.fragment_ironman_startup.view.*
-
-import kotlinx.android.synthetic.main.fragment_random.view.*
 
 
 class IronmanStartupFragment : Fragment() {
@@ -34,7 +31,7 @@ class IronmanStartupFragment : Fragment() {
             (activity as MainActivity).addFragment(PoolListFragment())
         }
         view.button_ironman_start_begin.setOnClickListener {
-            Toast.makeText(activity, "LETS DO THIS", Toast.LENGTH_SHORT).show()
+            (activity as MainActivity).addFragment(IronmanFragment())
         }
 
         return view
