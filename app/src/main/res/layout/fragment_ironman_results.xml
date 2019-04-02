@@ -6,6 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:layout_height="match_parent">
 
         <TextView
@@ -25,8 +26,8 @@
             android:layout_gravity="center"
             android:padding="16dp"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:columnWidth="42dp"
+            android:layout_width="match_parent"
             android:numColumns="auto_fit"
             android:gravity="center"/>
 
@@ -35,7 +36,6 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:id="@+id/text_ironman_results_percent"
-            android:text="100% Completion. Congratulations!"
             android:fontFamily="@font/css_font_light"
             android:textSize="20sp"/>
     </LinearLayout>

@@ -3,9 +3,10 @@ package com.jacobgb24.smashrandomizer.model
 import android.util.Log
 import kotlinx.android.synthetic.main.fragment_ironman.view.*
 import java.io.Serializable
+import java.text.DecimalFormat
 import kotlin.math.min
 
-class Ironman: Serializable {
+class Ironman {
 
     var chars: ArrayList<Character> = activePool.getSelected()
     var position = 0
@@ -35,7 +36,7 @@ class Ironman: Serializable {
         }
     }
 
-    fun isOver(): Boolean {
+    fun playerWon(): Boolean {
         return position == chars.size - 1
     }
 
@@ -43,7 +44,7 @@ class Ironman: Serializable {
      * Returns the completion percentage as a string XX.X
      */
     fun getPercentage(): String {
-        Log.e("PERCENT", "$position / ${chars.size} = ${position / chars.size.toDouble()}")
-        return if (chars.size > 0) "%.1f".format((position / chars.size.toDouble()) * 100) else "N/A"
+        val df = DecimalFormat("###.##%")
+        return if (chars.size > 0) df.format((position / chars.size.toDouble())) else "N/A"
     }
 }
