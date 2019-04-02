@@ -40,7 +40,7 @@ class IronmanFragment : Fragment() {
             onWinClick()
         }
         view.button_ironman_lose.setOnClickListener {
-            Toast.makeText(activity, "HAHA LOSER", Toast.LENGTH_SHORT).show()
+            startResults()
         }
         setCurrentChar(view)
 
@@ -57,7 +57,7 @@ class IronmanFragment : Fragment() {
 
     private fun onWinClick() {
         if (ironman.isOver()) {
-            Toast.makeText(activity, "WINNNNNNNEEEEEEEEEEERRRRRRRRRRRRR", Toast.LENGTH_SHORT).show()
+            startResults()
         }
         else {
             ironman.progress()
@@ -65,5 +65,10 @@ class IronmanFragment : Fragment() {
             deckAdapter.characterList = ironman.getDeck()
             deckAdapter.notifyDataSetChanged()
         }
+    }
+
+    private fun startResults() {
+        val resultsFrag = IronmanResultsFragment.newInstance(ironman)
+        (activity as MainActivity).addFragment(resultsFrag, trueReplace = true)
     }
 }
