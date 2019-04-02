@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:paddingTop="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:fontFamily="@font/css_font"
+            android:textAlignment="center"
+            android:text="Final Results"/>
+
+        <GridView
+            android:id="@+id/grid_ironman_end_results"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:columnWidth="42dp"
+            android:numColumns="auto_fit"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/text_ironman_results_percent"
+            android:text="100% Completion. Congratulations!"
+            android:fontFamily="@font/css_font_light"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/button_ironman_results_home"
+        android:layout_height="wrap_content"
+        android:text="HOME (Make like save button in charSelection)"/>
+
+</RelativeLayout>
+

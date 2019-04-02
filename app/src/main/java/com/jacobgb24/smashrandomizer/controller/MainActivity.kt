@@ -49,17 +49,15 @@ class MainActivity : AppCompatActivity() {
 
     fun addFragment(fragment: Fragment, tag: String? = null, trueReplace: Boolean = false) {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        if(trueReplace) {
+            supportFragmentManager.popBackStackImmediate()
+        }
         supportFragmentManager.inTransaction {
-            if (trueReplace) {
-                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                    .replace(android.R.id.content, fragment, tag)
-            }
-            else {
-                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                    .replace(android.R.id.content, fragment, tag).addToBackStack(tag)
-            }
+
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                .replace(android.R.id.content, fragment, tag).addToBackStack(tag)
+
         }
     }
 
@@ -71,6 +69,13 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar!!.setDisplayHomeAsUpEnabled(false)
             }
         }
+    }
+
+    fun removeAllFragments() {
+        while (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStackImmediate()
+        }
+        supportActionBar!!.setDisplayHomeAsUpEnabled(false)
     }
 
     override fun onBackPressed() {
