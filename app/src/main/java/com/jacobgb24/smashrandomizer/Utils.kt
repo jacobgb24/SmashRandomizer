@@ -6,14 +6,14 @@ import android.graphics.Color
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.graphics.drawable.RippleDrawable
+import android.media.MediaPlayer
 import android.os.Build
+import android.os.CountDownTimer
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.TooltipCompat
 import android.widget.ImageButton
 import android.widget.ImageView
-import com.jacobgb24.smashrandomizer.model.newPool
 import java.lang.Exception
-import kotlin.math.E
 
 /**
  * Wrapper for setting both the contentDescription and tooltipText
@@ -64,4 +64,31 @@ fun ImageButton.addRippleFG(color: String = "#44DEDEDE") {
 fun getColor(context: Context, color: Int, alpha: Int = 255): Int {
     val baseColor = ContextCompat.getColor(context, color)
     return Color.argb(alpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor))
+}
+
+
+/**
+ * Plays the given sound after an optional delay
+ * @param sound a resource id from raw. e.g. R.raw.congrats
+ * @param delay milliseconds to wait before playing
+ */
+fun playSound(context: Context, sound: Int, delay: Long = 0) {
+    object : CountDownTimer(delay, delay) {
+        override fun onFinish() {
+            val mp = MediaPlayer.create(context, sound)
+            mp.setOnCompletionListener {
+                mp.stop()
+                mp.reset()
+                mp.release()
+            }
+            mp.setOnPreparedListener {
+                mp.start()
+            }
+        }
+
+        override fun onTick(millisUntilFinished: Long) {
+
+        }
+    }.start()
+
 }

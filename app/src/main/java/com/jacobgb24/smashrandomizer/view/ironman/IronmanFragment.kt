@@ -2,21 +2,17 @@ package com.jacobgb24.smashrandomizer.view.ironman
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.Ironman
-import com.jacobgb24.smashrandomizer.model.currentCharacter
 import com.jacobgb24.smashrandomizer.setHelp
 import kotlinx.android.synthetic.main.fragment_ironman.view.*
-import kotlin.math.min
 
 
 class IronmanFragment : Fragment() {
@@ -40,7 +36,7 @@ class IronmanFragment : Fragment() {
             onWinClick()
         }
         view.button_ironman_lose.setOnClickListener {
-            startResults()
+            startResults(false)
         }
         setCurrentChar(view)
 
@@ -56,8 +52,8 @@ class IronmanFragment : Fragment() {
     }
 
     private fun onWinClick() {
-        if (ironman.isOver()) {
-            startResults()
+        if (ironman.playerWon()) {
+            startResults(true)
         }
         else {
             ironman.progress()
@@ -67,7 +63,8 @@ class IronmanFragment : Fragment() {
         }
     }
 
-    private fun startResults() {
+    private fun startResults(won: Boolean) {
+        if (won) ironman.position += 1
         val resultsFrag = IronmanResultsFragment.newInstance(ironman)
         (activity as MainActivity).addFragment(resultsFrag, trueReplace = true)
     }
