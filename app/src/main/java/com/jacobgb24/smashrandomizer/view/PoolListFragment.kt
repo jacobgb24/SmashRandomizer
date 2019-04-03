@@ -2,19 +2,16 @@ package com.jacobgb24.smashrandomizer.view
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.controller.PoolAdapter
-import com.jacobgb24.smashrandomizer.model.Pool
-import com.jacobgb24.smashrandomizer.model.activePool
-import com.jacobgb24.smashrandomizer.model.newPool
-import com.jacobgb24.smashrandomizer.model.pools
-import com.leinardi.android.speeddial.SpeedDialActionItem
+import com.jacobgb24.smashrandomizer.model.*
 import kotlinx.android.synthetic.main.dialog_new_pool.view.*
 import kotlinx.android.synthetic.main.fragment_pool_list.view.*
 
@@ -23,10 +20,11 @@ TODO: define layout for this fragment
 TODO: write list adapter for current pool
 TODO: figure out how to transition from this fragment to the character select fragment.
 */
-class PoolListFragment : Fragment() {
+class PoolListFragment : Fragment(), PoolClickHandler {
 
 
-    private lateinit var adapter: PoolAdapter
+    private lateinit var currentCharsAdapter: CharactersAdapter
+    private lateinit var poolAdapter: PoolAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,25 +33,41 @@ class PoolListFragment : Fragment() {
     // Create view hierarchy controlled by fragment.
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_pool_list, container, false)
-        adapter = PoolAdapter(view.context)
-        view.list_pool.adapter = adapter
+        currentCharsAdapter = CharactersAdapter(view.context, activePool.getSelected())
+        poolAdapter = PoolAdapter(view.context, this)
+
+        view.grid_pool_list_chars.adapter = currentCharsAdapter
+        view.list_pool.adapter = poolAdapter
+        view.text_pool_current.text = activePool.name
         (activity as MainActivity).supportActionBar!!.title = "Pools"
 
 //
-//        view.button_change_pool.setOnClickListener {
-//            newPoolDialog()
-//        }
-        setUpFAB(view)
-
-//        view.button_pool_edit.setOnClickListener {
-//            (activity as MainActivity).addFragment(CharacterSelectionFragment())
-//        }
+        view.button_change_pool.setOnClickListener {
+            newPoolDialog()
+        }
+        view.button_pool_edit.setOnClickListener {
+            (activity as MainActivity).addFragment(CharacterSelectionFragment())
+        }
+        view.button_pool_delete.setOnClickListener {
+            Toast.makeText(view.context, "Not implemented", Toast.LENGTH_SHORT).show()
+        }
+        view.button_pool_rename.setOnClickListener {
+            Toast.makeText(view.context, "Not implemented", Toast.LENGTH_SHORT).show()
+        }
 
         return view
 
     }
 
-    fun newPoolDialog() {
+    override fun onPoolClick(pos: Int) {
+        selectPool(pos)
+        poolAdapter.notifyDataSetChanged()
+        view!!.text_pool_current.text = activePool.name
+        currentCharsAdapter.characterList = activePool.getSelected()
+        currentCharsAdapter.notifyDataSetChanged()
+    }
+
+    private fun newPoolDialog() {
         val builder = AlertDialog.Builder(activity)
         val view = requireActivity().layoutInflater.inflate(R.layout.dialog_new_pool, null)
         val poolName = view.edittext_new_pool
@@ -78,19 +92,9 @@ class PoolListFragment : Fragment() {
         dialog.show()
     }
 
-    fun setUpFAB(view: View) {
-        val fab = view.fab_pool
-        fab.addActionItem(SpeedDialActionItem.Builder(R.id.fab_rename, R.drawable.ic_butt_ironman_down).create())
+}
 
-        fab.setOnActionSelectedListener {
-            when(id) {
-                R.id.fab_rename -> {
-                    Toast.makeText(activity, "CLICKED RENAME", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                else -> false
-            }
-        }
-    }
 
+interface PoolClickHandler {
+    fun onPoolClick(pos: Int)
 }
