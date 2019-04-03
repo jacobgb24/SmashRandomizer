@@ -2,6 +2,7 @@ package com.jacobgb24.smashrandomizer
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
@@ -9,10 +10,11 @@ import android.graphics.drawable.RippleDrawable
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.CountDownTimer
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.TooltipCompat
+import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.TooltipCompat
 import android.widget.ImageButton
 import android.widget.ImageView
+import com.bumptech.glide.load.engine.Resource
 import java.lang.Exception
 
 /**
@@ -90,5 +92,8 @@ fun playSound(context: Context, sound: Int, delay: Long = 0) {
 
         }
     }.start()
-
 }
+
+
+fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toInt()
+fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()

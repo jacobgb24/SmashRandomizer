@@ -3,7 +3,7 @@ package com.jacobgb24.smashrandomizer.view
 import android.app.AlertDialog
 import android.opengl.Visibility
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.*
 import android.widget.ImageView

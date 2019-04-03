@@ -1,72 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#DEDEDE"
+    android:orientation="vertical"
+    android:weightSum="10"
     tools:context=".view.PoolListFragment">
 
-    <ListView
-        android:id="@+id/list_pool"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_weight="6"
         android:padding="8dp"
-        android:layout_height="match_parent"
-        android:divider="@android:color/transparent"
-        android:layout_above="@id/bg_current_pool"
-        android:dividerHeight="4dp"
-        android:layout_width="match_parent"/>
-    <!-- This adds backdrop along whole bottom-->
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="#ACACAC"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignTop="@id/bg_current_pool">-->
+        android:background="#DEDEDE"
+        android:layout_height="0dp">
 
-    <!--</LinearLayout>-->
+        <ListView
+            android:id="@+id/list_pool"
+            android:layout_height="match_parent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="4dp"
+            android:paddingBottom="72dp"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_width="match_parent"/>
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/butt_add_selector"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:contentDescription="New Pool"
+            android:tooltipText="New Pool"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            tools:ignore="UnusedAttribute"
+            android:id="@+id/button_change_pool"/>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:id="@+id/sep_list_pool"
+        android:layout_height="4dp"
+        android:background="@color/darkBG"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:orientation="vertical"
-        android:id="@+id/bg_current_pool"
-        android:layout_marginBottom="8dp"
-        android:padding="16dp"
-        android:layout_marginEnd="-32dp"
-        android:background="@drawable/ic_active_pool_bg"
-        android:layout_toStartOf="@id/fab_pool"
-        android:gravity="center_vertical"
-        android:layout_height="72dp">
-        <TextView
+        android:layout_weight="4"
+        android:layout_height="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:gravity="center_vertical"
+            android:id="@+id/view_pool_info"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="22sp"
+                android:paddingStart="8dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/css_font"
+                android:layout_toStartOf="@id/button_pool_edit"
+                android:id="@+id/text_pool_current"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:tint="@color/colorAccent"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:id="@+id/button_pool_edit"
+                android:layout_toStartOf="@id/button_pool_rename"
+                android:src="@drawable/ic_group_add_24dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:tint="@color/colorAccent"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:id="@+id/button_pool_rename"
+                android:layout_toStartOf="@id/button_pool_delete"
+                android:src="@drawable/ic_edit_24dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:tint="@color/colorAccent"
+                android:padding="8dp"
+                android:id="@+id/button_pool_delete"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_delete_24dp"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:listDivider"/>
+
+        <GridView
+            android:id="@+id/grid_pool_list_chars"
+            android:padding="8dp"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarStyle="outsideOverlay"
+            android:fadeScrollbars="false"
+            android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Active Pool:"
-            android:fontFamily="@font/css_font"
-            android:textSize="18dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:paddingTop="2dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/css_font_light"
-            android:text="Original 8"/>
+            android:columnWidth="42dp"
+            android:numColumns="auto_fit"
+            android:gravity="center"/>
 
     </LinearLayout>
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:orientation="vertical"-->
+    <!--android:id="@+id/bg_current_pool"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:padding="16dp"-->
+    <!--android:layout_marginEnd="-32dp"-->
+    <!--android:background="@drawable/ic_active_pool_bg"-->
+    <!--android:layout_toStartOf="@id/fab_pool"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:layout_height="72dp">-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Active Pool:"-->
+    <!--android:fontFamily="@font/css_font"-->
+    <!--android:textSize="18dp"/>-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:paddingTop="2dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:fontFamily="@font/css_font_light"-->
+    <!--android:text="Original 8"/>-->
 
-    <com.leinardi.android.speeddial.SpeedDialView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        app:sdMainFabClosedSrc="@drawable/ic_baseline_group_add_24px"
-        app:sdMainFabOpenedSrc="@drawable/ic_baseline_close_24px"
-        app:sdMainFabOpenedBackgroundColor="#fe3636"
-        app:sdMainFabClosedBackgroundColor="#fe3636"
-        android:contentDescription="New Pool"
-        android:tooltipText="New Pool"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        tools:ignore="UnusedAttribute"
-        android:id="@+id/fab_pool"/>
+    <!--</LinearLayout>-->
+
+    <!--<ImageButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:contentDescription="New Pool"-->
+    <!--android:tooltipText="New Pool"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--tools:ignore="UnusedAttribute"-->
+    <!--android:id="@+id/fab_pool"/>-->
 
    <!---->
     <!--<Button-->
@@ -77,4 +172,4 @@
         <!--android:text="Edit(temp)"-->
         <!--android:id="@+id/button_pool_edit"/>-->
 
-</RelativeLayout>
+</LinearLayout>
