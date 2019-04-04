@@ -1,11 +1,14 @@
 package com.jacobgb24.smashrandomizer.view
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
@@ -13,6 +16,7 @@ import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.controller.PoolAdapter
 import com.jacobgb24.smashrandomizer.model.*
 import kotlinx.android.synthetic.main.dialog_new_pool.view.*
+import kotlinx.android.synthetic.main.dialog_rename_pool.view.*
 import kotlinx.android.synthetic.main.fragment_pool_list.view.*
 
 /*
@@ -49,10 +53,10 @@ class PoolListFragment : Fragment(), PoolClickHandler {
             (activity as MainActivity).addFragment(CharacterSelectionFragment())
         }
         view.button_pool_delete.setOnClickListener {
-            Toast.makeText(view.context, "Not implemented", Toast.LENGTH_SHORT).show()
+            deletePoolDialog()
         }
         view.button_pool_rename.setOnClickListener {
-            Toast.makeText(view.context, "Not implemented", Toast.LENGTH_SHORT).show()
+            renameDialog()
         }
 
         return view
@@ -61,6 +65,10 @@ class PoolListFragment : Fragment(), PoolClickHandler {
 
     override fun onPoolClick(pos: Int) {
         selectPool(pos)
+        updateView()
+    }
+
+    private fun updateView() {
         poolAdapter.notifyDataSetChanged()
         view!!.text_pool_current.text = activePool.name
         currentCharsAdapter.characterList = activePool.getSelected()
@@ -81,6 +89,7 @@ class PoolListFragment : Fragment(), PoolClickHandler {
                     name = "Unnamed Pool"
                 }
                 newPool(name, check.isChecked)
+                updateView()
                 dialog.dismiss()
                 (activity as MainActivity).addFragment(CharacterSelectionFragment())
             }
@@ -89,6 +98,51 @@ class PoolListFragment : Fragment(), PoolClickHandler {
             }
         }
         val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun deletePoolDialog() {
+        val builder = AlertDialog.Builder(activity)
+        with(builder) {
+            setTitle("Delete ${activePool.name}?")
+            setPositiveButton("Delete") { dialog, _ ->
+                deletePool(activePool)
+                updateView()
+                dialog.dismiss()
+            }
+            setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun renameDialog() {
+        val builder = AlertDialog.Builder(activity)
+        val view = requireActivity().layoutInflater.inflate(R.layout.dialog_rename_pool, null)
+        val poolName = view.edittext_rename_pool
+        poolName.setText(activePool.name)
+        poolName.setSelection(poolName.text.length)
+        with(builder) {
+            setTitle("Rename Pool")
+            setView(view)
+            setPositiveButton("Rename") { dialog, _ ->
+                var name = poolName.text.toString()
+                if (name.isEmpty()) {
+                    name = "Unnamed Pool"
+                }
+                activePool.name = name
+                updateView()
+                dialog.dismiss()
+            }
+            setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+        }
+        val dialog = builder.create()
+        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+
         dialog.show()
     }
 
