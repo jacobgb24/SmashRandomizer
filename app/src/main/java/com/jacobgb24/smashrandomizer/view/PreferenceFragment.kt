@@ -10,7 +10,10 @@ import com.jacobgb24.smashrandomizer.R
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import com.jacobgb24.smashrandomizer.BuildConfig
 import com.jacobgb24.smashrandomizer.controller.MainActivity
+import android.content.Intent
+import android.net.Uri
 
 
 class PreferenceFragment: PreferenceFragmentCompat() {
@@ -31,6 +34,21 @@ class PreferenceFragment: PreferenceFragmentCompat() {
         val repeatPref = findPreference("pref_allow_repeat")
         repeatPref.setOnPreferenceClickListener {
             Toast.makeText(activity, "This does nothing right now", Toast.LENGTH_SHORT).show()
+            true
+        }
+
+        val versionPref = findPreference("pref_version")
+        versionPref.title = "Version ${BuildConfig.VERSION_NAME}"
+
+        val githubPref = findPreference("pref_github")
+        githubPref.setOnPreferenceClickListener {
+            try {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jacobgb24/SmashRandomizer"))
+                )
+            } catch (e: Exception) {
+                Toast.makeText(activity, "Could not open link", Toast.LENGTH_SHORT).show()
+            }
             true
         }
     }

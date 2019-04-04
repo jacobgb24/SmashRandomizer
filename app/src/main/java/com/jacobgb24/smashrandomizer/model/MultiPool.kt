@@ -45,12 +45,17 @@ fun deletePool(index: Int) {
 }
 
 fun deletePool(pool: Pool) {
+    val ind = pools.indexOf(pool)
     pools.remove(pool)
     if(activePool == pool) {
         if (pools.size == 0) {
             pools.add(Pool("Default"))
+            selectPool(0)
+        } else if (ind == pools.size) {
+            selectPool(pools.size - 1)
+        } else {
+            selectPool(ind)
         }
-        selectPool(0)
     }
 }
 
