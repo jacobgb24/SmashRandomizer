@@ -37,7 +37,7 @@
                 android:layout_alignParentStart="true"
                 android:id="@+id/text_ironman_start_pool"
                 android:textSize="18sp"
-                android:layout_toLeftOf="@id/button_ironman_start_change_pool"
+                android:layout_toStartOf="@id/button_ironman_start_change_pool"
                 android:fontFamily="@font/css_font"/>
             <Button
                 android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
             android:paddingEnd="8dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:columnWidth="42dp"
+            android:columnWidth="52dp"
             android:numColumns="auto_fit"
             android:gravity="center"/>
     </LinearLayout>

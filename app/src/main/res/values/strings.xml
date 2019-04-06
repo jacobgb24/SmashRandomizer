@@ -17,4 +17,6 @@
     <string name="on_deck">On Deck:</string>
     <string name="lose">Lose</string>
     <string name="win">Win</string>
+    <string name="delete_pool">Delete the active pool</string>
+    <string name="rename_pool">Rename the active pool</string>
 </resources>
