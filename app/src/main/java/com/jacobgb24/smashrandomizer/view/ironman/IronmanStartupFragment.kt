@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.*
 import android.widget.Toast
 import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.activePool
@@ -30,6 +31,7 @@ class IronmanStartupFragment : Fragment() {
         view.button_ironman_start_change_pool.setOnClickListener {
             (activity as MainActivity).addFragment(PoolListFragment())
         }
+        view.button_ironman_start_begin.addRippleFG()
         view.button_ironman_start_begin.setOnClickListener {
             (activity as MainActivity).addFragment(IronmanFragment())
         }

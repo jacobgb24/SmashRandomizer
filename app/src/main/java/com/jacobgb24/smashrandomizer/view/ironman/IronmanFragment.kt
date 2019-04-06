@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.Ironman
@@ -32,6 +33,8 @@ class IronmanFragment : Fragment() {
         (activity as MainActivity).supportActionBar!!.title = "Ironman"
         deckAdapter = CharactersAdapter(activity!!, ironman.getDeck())
         view.grid_ironman_deck.adapter = deckAdapter
+        view.button_ironman_lose.addRippleFG()
+        view.button_ironman_win.addRippleFG()
         view.button_ironman_win.setOnClickListener {
             onWinClick()
         }

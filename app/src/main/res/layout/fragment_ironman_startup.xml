@@ -6,6 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:layout_above="@id/bg_start"
+        android:layout_alignParentTop="true"
         android:layout_height="match_parent">
 
         <TextView
@@ -16,7 +18,7 @@
             android:paddingBottom="8dp"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="In an Ironman, your pool will be shuffled. The goal is to win with every character in the order they are presented."/>
+            android:text="@string/iron_instructions"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -35,6 +37,7 @@
                 android:layout_alignParentStart="true"
                 android:id="@+id/text_ironman_start_pool"
                 android:textSize="18sp"
+                android:layout_toLeftOf="@id/button_ironman_start_change_pool"
                 android:fontFamily="@font/css_font"/>
             <Button
                 android:layout_width="wrap_content"
@@ -44,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:padding="0dp"
-                android:text="CHANGE"/>
+                android:text="@string/change"/>
         </RelativeLayout>
         <GridView
             android:id="@+id/grid_ironman_start_chars"
@@ -56,14 +59,28 @@
             android:numColumns="auto_fit"
             android:gravity="center"/>
     </LinearLayout>
-    <Button
+
+    <LinearLayout
         android:layout_width="match_parent"
+        android:background="@android:color/black"
+        android:id="@+id/bg_start"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/button_ironman_start_begin"
-        android:layout_height="wrap_content"
-        android:text="BEGIN (Make like save button in charSelection)"/>
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:src="@drawable/butt_start_selector"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/start"
+            android:id="@+id/button_ironman_start_begin"/>
+    </LinearLayout>
 
 </RelativeLayout>
 

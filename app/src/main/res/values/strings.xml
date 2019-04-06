@@ -9,4 +9,12 @@
     <string name="new_random_character">New Random Character</string>
     <string name="edit_pool">Edit the active pool</string>
     <string name="title_pool">Pool:\u0020</string>
+    <string name="iron_instructions">In an Ironman, your pool will be shuffled. The goal is to win with every character in the order they are presented.</string>
+    <string name="return_home">Return Home</string>
+    <string name="final_results">Final Results</string>
+    <string name="start">Start</string>
+    <string name="change">CHANGE</string>
+    <string name="on_deck">On Deck:</string>
+    <string name="lose">Lose</string>
+    <string name="win">Win</string>
 </resources>
