@@ -61,7 +61,7 @@
             android:textSize="18sp"
             android:fontFamily="@font/css_font"
             android:textColor="@android:color/black"
-            android:text="On Deck:"/>
+            android:text="@string/on_deck"/>
         <GridView
             android:id="@+id/grid_ironman_deck"
             android:paddingStart="12dp"
@@ -73,20 +73,41 @@
             android:gravity="center"/>
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LOSE"
-        android:id="@+id/button_ironman_lose"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@android:color/black"
+        android:id="@+id/bg_home"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WIN"
-        android:id="@+id/button_ironman_win"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
+        android:weightSum="2"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:src="@drawable/butt_lose_selector"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/lose"
+            android:id="@+id/button_ironman_lose"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:src="@drawable/butt_win_selector"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/win"
+            android:id="@+id/button_ironman_win"/>
+    </LinearLayout>
 
 
 

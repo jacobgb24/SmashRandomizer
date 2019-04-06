@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.IronmanResultsAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
@@ -50,6 +51,7 @@ class IronmanResultsFragment : Fragment() {
         (activity as MainActivity).supportActionBar!!.title = "Ironman Results"
         view.grid_ironman_end_results.adapter = IronmanResultsAdapter(activity!!, ironman.chars, ironman.position)
         view.text_ironman_results_percent.text = "${ironman.getPercentage()} Completion"
+        view.button_ironman_results_home.addRippleFG()
         view.button_ironman_results_home.setOnClickListener {
             (activity as MainActivity).removeAllFragments()
         }

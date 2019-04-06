@@ -7,6 +7,8 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:layout_above="@id/bg_home"
+        android:layout_alignParentTop="true"
         android:layout_height="match_parent">
 
         <TextView
@@ -19,7 +21,7 @@
             android:textSize="24sp"
             android:fontFamily="@font/css_font"
             android:textAlignment="center"
-            android:text="Final Results"/>
+            android:text="@string/final_results"/>
 
         <GridView
             android:id="@+id/grid_ironman_end_results"
@@ -40,14 +42,27 @@
             android:textSize="20sp"/>
     </LinearLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
+        android:background="@android:color/black"
+        android:id="@+id/bg_home"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/button_ironman_results_home"
-        android:layout_height="wrap_content"
-        android:text="HOME (Make like save button in charSelection)"/>
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:src="@drawable/butt_home_selector"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/return_home"
+            android:id="@+id/button_ironman_results_home"/>
+    </LinearLayout>
 
 </RelativeLayout>
 

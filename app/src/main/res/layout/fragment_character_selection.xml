@@ -67,7 +67,7 @@
         android:layout_height="wrap_content">
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:scaleType="fitXY"
             android:background="@android:color/transparent"
             android:src="@drawable/butt_save_selector"
