@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:fontFamily="@font/css_font"
+            android:textColor="@color/darkText"
             android:layout_toStartOf="@id/text_list_pool_size"
             android:textSize="16sp"/>
 

@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#ed3636</color>
     <color name="colorPrimaryDark">#b3000e</color>
-    <color name="colorAccent">#ffd600</color>
+    <color name="colorAccent">#003aa6</color>
+    <color name="colorAccentDark">#001a9b</color>
     <color name="darkBG">#555555</color>
     <color name="darkText">#555555</color>
     <!-- Colors below from smash 64. Dark versions generated -->

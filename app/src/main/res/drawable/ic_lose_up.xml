@@ -5,10 +5,10 @@
         android:width="581dp"
         xmlns:android="http://schemas.android.com/apk/res/android">
     <path
-        android:fillColor="#bd7314"
+        android:fillColor="@color/colorAccentDark"
         android:pathData="M580.57,0l-70.25,193l-510.32,0l0,-193l580.57,0z"/>
     <path
-        android:fillColor="#ffdf1a"
+        android:fillColor="@color/colorAccent"
         android:pathData="M500.32,183l66.61,-183l-566.93,0l0,183l500.32,0z"/>
     <path
         android:fillColor="#fff"
