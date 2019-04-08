@@ -26,7 +26,7 @@ class Character(val name: String, val imageName: String, val context: Context) {
         if (appearanceOrder == -1) {
             // Default On-Start Character
             val build = SpannableStringBuilder()
-            build.append("   ?")
+            build.append("  ?")
             return build
         }
 
