@@ -2,17 +2,18 @@ package com.jacobgb24.smashrandomizer.controller
 
 import android.content.Context
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.google.android.material.card.MaterialCardView
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.model.Pool
 import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.model.pools
 import com.jacobgb24.smashrandomizer.model.selectPool
-import com.google.android.material.card.MaterialCardView
 import com.jacobgb24.smashrandomizer.getColor
 import com.jacobgb24.smashrandomizer.toPx
 import com.jacobgb24.smashrandomizer.view.PoolClickHandler

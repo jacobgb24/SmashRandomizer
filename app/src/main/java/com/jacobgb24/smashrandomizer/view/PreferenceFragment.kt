@@ -14,6 +14,8 @@ import com.jacobgb24.smashrandomizer.BuildConfig
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import android.content.Intent
 import android.net.Uri
+import android.webkit.WebView
+import androidx.appcompat.app.AlertDialog
 
 
 class PreferenceFragment: PreferenceFragmentCompat() {
@@ -31,12 +33,6 @@ class PreferenceFragment: PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, null)
 
-        val repeatPref = findPreference("pref_allow_repeat")
-        repeatPref.setOnPreferenceClickListener {
-            Toast.makeText(activity, "This does nothing right now", Toast.LENGTH_SHORT).show()
-            true
-        }
-
         val versionPref = findPreference("pref_version")
         versionPref.title = "Version ${BuildConfig.VERSION_NAME}"
 
@@ -51,9 +47,29 @@ class PreferenceFragment: PreferenceFragmentCompat() {
             }
             true
         }
+
+        val glidePref = findPreference("pref_glide")
+        glidePref.setOnPreferenceClickListener {
+            webDialog("file:///android_asset/legal/glide_license.html")
+            true
+        }
+
+        val legalPref = findPreference("pref_legal")
+        legalPref.setOnPreferenceClickListener {
+            webDialog("file:///android_asset/legal/legal_disclaimer.html")
+            true
+        }
     }
 
-
+    private fun webDialog(url: String) {
+        val view = WebView(activity)
+        view.loadUrl(url)
+        val alertDialog = AlertDialog.Builder(context!!)
+            .setView(view)
+            .setPositiveButton("ok", null)
+            .create()
+        alertDialog.show()
+    }
 
 
 }

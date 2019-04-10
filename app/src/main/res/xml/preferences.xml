@@ -3,13 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
         android:title="Settings">
+        <!--<CheckBoxPreference-->
+            <!--android:key="pref_allow_repeat"-->
+            <!--android:title="Allow Repeating"-->
+            <!--android:summary="Allow the same character to be chosen back to back"-->
+            <!--/>-->
         <CheckBoxPreference
-            android:key="pref_allow_repeat"
-            android:title="Allow Repeating"
-            android:summary="Allow the same character to be chosen back to back"
-            />
+                android:key="pref_hide_deck"
+                android:title="Hide Ironman Deck"
+                android:summary="Hides the upcoming character so it's a surprise."
+                />
     </PreferenceCategory>
 
+    <PreferenceCategory
+            android:title="Legal">
+        <Preference
+                android:key="pref_glide"
+                android:title="Glide Library"/>
+        <Preference
+                android:key="pref_legal"
+                android:title="Legal Disclaimer"/>
+    </PreferenceCategory>
     <PreferenceCategory
         android:title="About">
         <Preference
