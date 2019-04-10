@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_ironman_results.view.*
 
 class IronmanResultsFragment : Fragment() {
 
-    val TAG = "IRONMAN_START"
+    val fragTag = "IRONMAN_START"
     private lateinit var ironman: Ironman
 
     companion object {

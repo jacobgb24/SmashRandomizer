@@ -18,6 +18,7 @@ import android.content.Context
 // Must be initialized before using any functions. Do so via `mainCharacterList = generateCharacters(context)`
 lateinit var mainCharacterList: ArrayList<Character>
 
+
 // Sorts the list by the character numbers in game.
 fun ArrayList<Character>.sortByAppearance() = sortBy { it.appearanceOrder.toDouble() }
 
@@ -46,7 +47,7 @@ fun generateCharacters(context: Context): ArrayList<Character> {
 
     val characters = ArrayList<Character>()
 
-    val portraits = context.assets.list("portraits")
+    val portraits = context.assets.list("portraits")!!
     for (image in portraits) {
         val name = when(image) {
             // handle special cases, otherwise do default parsing

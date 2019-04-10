@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_ironman_startup.view.*
 
 class IronmanStartupFragment : Fragment() {
 
-    val TAG = "IRONMAN_START"
+    val fragTag = "IRONMAN_START"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

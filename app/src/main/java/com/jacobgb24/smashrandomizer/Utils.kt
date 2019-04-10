@@ -7,6 +7,8 @@ import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
+import android.graphics.PorterDuff
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.RippleDrawable
 import android.media.MediaPlayer
 import android.os.Build
@@ -39,14 +41,15 @@ fun ImageView.setHelp(str: String) {
  * every other instance of the drawable would be desaturated too
  * @param saturation An int between 0 (gray) and 100 (full color)
  */
-fun ImageView.setSaturation(saturation: Int = 0) {
+fun ImageView.setSaturation(saturation: Int) {
     if (saturation > 100 || saturation < 0) {
         throw Exception("Saturation must be between 0 and 100")
     }
     val matrix = ColorMatrix()
     matrix.setSaturation(saturation / 100f)
-    setImageDrawable(drawable.constantState.newDrawable().mutate())
+    setImageDrawable(drawable.constantState?.newDrawable()?.mutate())
     colorFilter = ColorMatrixColorFilter(matrix)
+    imageTintMode = PorterDuff.Mode.DARKEN
 }
 
 

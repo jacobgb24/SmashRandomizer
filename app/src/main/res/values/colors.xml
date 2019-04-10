@@ -4,17 +4,10 @@
     <color name="colorPrimaryDark">#b3000e</color>
     <color name="colorAccent">#003aa6</color>
     <color name="colorAccentDark">#001a9b</color>
-    <color name="darkBG">#555555</color>
     <color name="darkText">#555555</color>
     <!-- Colors below from smash 64. Dark versions generated -->
     <color name="green">#4eb94e</color>
-    <color name="greenDark">#04881f</color>
-    <color name="blue">#4e4ee9</color>
-    <color name="blueDark">#0025b6</color>
-    <color name="yellow">#ffdf1a</color>
-    <color name="yellowDark">#c7ae00</color>
     <color name="red">#ed3636</color>
-    <color name="redDark">#b3000e</color>
-    <color name="redShadow">#771b1b</color> <!-- The color we've been using on buttons -->
+    <!-- The color we've been using on buttons -->
 
 </resources>

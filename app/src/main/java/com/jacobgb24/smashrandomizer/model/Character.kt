@@ -12,7 +12,6 @@ import java.io.Serializable
 import kotlin.math.floor
 
 
-lateinit var currentCharacter: Character
 
 class Character(val name: String, val imageName: String, val context: Context) {
 

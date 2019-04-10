@@ -7,10 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
 import com.jacobgb24.smashrandomizer.model.*
-import com.jacobgb24.smashrandomizer.view.CharacterSelectionFragment
-import com.jacobgb24.smashrandomizer.model.currentCharacter
 import com.jacobgb24.smashrandomizer.model.loadDefaultCharacter
 import com.jacobgb24.smashrandomizer.view.RandomFragment
 
@@ -22,14 +19,13 @@ TODO: make fancy pants randomize button
 TODO: make fancy pants app icon
  */
 class MainActivity : AppCompatActivity() {
-    val TAG = "MAIN"
+    private val fragTag = "MAIN"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainCharacterList = generateCharacters(this)
         loadPools(this)
-        currentCharacter = loadDefaultCharacter(this)
-        Log.e(TAG, "Current Character URI:"+ currentCharacter.portraitUri)
+
         setBaseFragment()
     }
 
@@ -64,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     fun removeFragment() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStackImmediate()
-            Log.e(TAG, "removed frag. count ${supportFragmentManager.backStackEntryCount}")
+            Log.e(fragTag, "removed frag. count ${supportFragmentManager.backStackEntryCount}")
             if (supportFragmentManager.backStackEntryCount == 0) {
                 supportActionBar!!.setDisplayHomeAsUpEnabled(false)
             }
@@ -79,7 +75,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        Log.e(TAG, "onBackCalled")
+        Log.e(fragTag, "onBackCalled")
 
         val fragment = supportFragmentManager.findFragmentById(android.R.id.content)
 
@@ -96,7 +92,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        Log.e(TAG, "Menu: ${item.toString()} clicked")
+        Log.e(fragTag, "Menu: ${item.toString()} clicked")
         when(item!!.itemId) {
             android.R.id.home -> onBackPressed()
             else -> return super.onOptionsItemSelected(item)

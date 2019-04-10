@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_ironman.view.*
 
 class IronmanFragment : Fragment() {
 
-    val TAG = "IRONMAN_START"
+    val fragTag = "IRONMAN_START"
     private var ironman = Ironman()
     private lateinit var deckAdapter: CharactersAdapter
 

@@ -28,7 +28,7 @@ class CharactersAdapter(private val context: Context, var characterList: ArrayLi
     }
 
     class CharacterViewHolder(val v: View) {
-        var image: ImageView = v.image_character_icon
+        private var image: ImageView = v.image_character_icon
 
         fun bind(character: Character) {
             with(image) {

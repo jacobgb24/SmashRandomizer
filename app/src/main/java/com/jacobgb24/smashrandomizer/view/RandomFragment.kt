@@ -7,17 +7,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.*
 import com.jacobgb24.smashrandomizer.controller.MainActivity
+import com.jacobgb24.smashrandomizer.model.Character
 import com.jacobgb24.smashrandomizer.model.activePool
-import com.jacobgb24.smashrandomizer.model.currentCharacter
+import com.jacobgb24.smashrandomizer.model.loadDefaultCharacter
 import com.jacobgb24.smashrandomizer.view.ironman.IronmanStartupFragment
 import kotlinx.android.synthetic.main.fragment_random.view.*
 
 
 class RandomFragment : Fragment() {
 
+    private lateinit var currentCharacter: Character
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        currentCharacter = loadDefaultCharacter(this.context!!)
     }
 
     // Create view hierarchy controlled by fragment.

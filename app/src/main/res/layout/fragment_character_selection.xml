@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.CharacterSelectionFragment"
-    android:background="?android:colorBackground"
     android:animateLayoutChanges="true"
-    android:id="@+id/root_character_selection">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,12 +15,12 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:id="@+id/text_selection_banner"
             android:layout_height="wrap_content"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:paddingTop="16dp"
-            android:text="Long-click a character to see their name."
+            android:text="@string/selection_banner"
+            android:layout_toStartOf="@id/button_selection_banner"
             android:textSize="14sp"/>
 
         <Button
@@ -29,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
-            android:text="Got it"
+            android:text="@string/got_it"
             android:id="@+id/button_selection_banner"
             android:textColor="@color/colorPrimaryDark"/>
 
@@ -72,6 +71,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/butt_save_selector"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/save"
             android:id="@+id/button_pool_save"/>
     </LinearLayout>
 

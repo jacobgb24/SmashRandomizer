@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="fab_rename" type="id" />
-    <item name="fab_edit" type="id" />
-    <item name="fab_delete" type="id" />
 </resources>

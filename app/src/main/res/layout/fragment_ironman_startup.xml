@@ -80,6 +80,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/start"
             android:id="@+id/button_ironman_start_begin"/>
+
     </LinearLayout>
 
 </RelativeLayout>

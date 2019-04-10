@@ -1,14 +1,11 @@
 package com.jacobgb24.smashrandomizer.view
 
 import android.app.AlertDialog
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.*
-import android.widget.ImageView
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.jacobgb24.smashrandomizer.controller.CharacterSelectionAdapter
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.addRippleFG
@@ -16,14 +13,13 @@ import com.jacobgb24.smashrandomizer.controller.FragOnBackPressed
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.model.deletePool
-import com.jacobgb24.smashrandomizer.model.pools
 import com.jacobgb24.smashrandomizer.model.savePools
 import kotlinx.android.synthetic.main.fragment_character_selection.view.*
 
 
 class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
 
-    private val TAG = "CharacterSelectionFrag"
+    private val fragTag = "CharacterSelectionFrag"
     private lateinit var adapter: CharacterSelectionAdapter
     private var activePoolCopy = activePool.copy()
 
@@ -112,7 +108,7 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
     }
 
     override fun onBackPressed(): Boolean {
-        Log.e(TAG, "onBack Called")
+        Log.e(fragTag, "onBack Called")
         showSaveAlert()
         return true
     }

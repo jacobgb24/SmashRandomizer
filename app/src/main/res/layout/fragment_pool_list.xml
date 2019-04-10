@@ -43,9 +43,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:id="@+id/sep_list_pool"
         android:layout_height="4dp"
-        android:background="@color/darkBG"/>
+        android:background="@color/darkText"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,7 +56,6 @@
             android:layout_width="match_parent"
             android:padding="8dp"
             android:gravity="center_vertical"
-            android:id="@+id/view_pool_info"
             android:layout_height="wrap_content">
 
             <TextView

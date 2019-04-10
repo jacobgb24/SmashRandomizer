@@ -95,7 +95,7 @@ data class Pool(var name: String): Serializable {
 
 
     fun copy(): Pool {
-        var newPool = Pool(name)
+        val newPool = Pool(name)
         newPool.characters = ArrayList(characters.toMutableList())
         return newPool
     }
@@ -111,5 +111,12 @@ data class Pool(var name: String): Serializable {
 
         return true
     }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + characters.hashCode()
+        return result
+    }
+
 
 }

@@ -13,7 +13,11 @@ import com.jacobgb24.smashrandomizer.model.Character
 import kotlinx.android.synthetic.main.item_pool_character.view.*
 
 
-class IronmanResultsAdapter(private val context: Context, var characterList: ArrayList<Character>, val finalPos: Int)
+class IronmanResultsAdapter(
+    private val context: Context,
+    private var characterList: ArrayList<Character>,
+    private val finalPos: Int
+)
     : BaseAdapter() {
 
     override fun getCount(): Int {
@@ -29,7 +33,7 @@ class IronmanResultsAdapter(private val context: Context, var characterList: Arr
     }
 
     class ResultsViewHolder(val v: View) {
-        var image: ImageView = v.image_character_icon
+        private var image: ImageView = v.image_character_icon
 
         fun bind(character: Character, state: ResultState) {
             with(image) {

@@ -38,14 +38,6 @@
             android:textSize="12sp"/>
     </RelativeLayout>
 
-    <!--<com.jacobgb24.smashrandomizer.controller.WrappingGridView-->
-    <!--android:id="@+id/grid_pool_chars"-->
-    <!--android:paddingTop="8dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:columnWidth="42dp"-->
-    <!--android:numColumns="auto_fit"-->
-    <!--android:gravity="center"/>-->
 
 </com.google.android.material.card.MaterialCardView>
 

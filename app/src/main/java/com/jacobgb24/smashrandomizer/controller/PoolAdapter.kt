@@ -20,7 +20,7 @@ import com.jacobgb24.smashrandomizer.view.PoolClickHandler
 import kotlinx.android.synthetic.main.item_pool.view.*
 
 
-class PoolAdapter(private val context: Context, val clickHandler: PoolClickHandler) : BaseAdapter() {
+class PoolAdapter(private val context: Context, private val clickHandler: PoolClickHandler) : BaseAdapter() {
 
 
     override fun getCount(): Int {
@@ -39,7 +39,7 @@ class PoolAdapter(private val context: Context, val clickHandler: PoolClickHandl
         val name: TextView = v.text_list_pool_name
         val size: TextView = v.text_list_pool_size
         //        val charList: WrappingGridView = v.grid_pool_chars
-        val card: MaterialCardView = v.card_pool
+        private val card: MaterialCardView = v.card_pool
 
         fun bind(pool: Pool, handler: PoolClickHandler, pos: Int) {
             name.text = pool.name

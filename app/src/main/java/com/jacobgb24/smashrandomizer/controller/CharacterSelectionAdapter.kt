@@ -28,7 +28,7 @@ class CharacterSelectionAdapter(private val context: Context): BaseAdapter(), Ch
     }
 
     class CharacterViewHolder(val v: View) {
-        var image: ImageView = v.image_character_icon_selectable
+        private var image: ImageView = v.image_character_icon_selectable
 
         fun bind(pos: Int, character: Character, handler: CharacterClickHandler) {
             with(image) {

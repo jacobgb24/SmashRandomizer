@@ -34,10 +34,11 @@ fun newPool(name: String, baseSelection: Boolean = true) {
 
 
 fun deletePool(index: Int) {
-    if (activePool.equals(pools[index])) {
+    if (activePool == pools[index]) {
         if (index != 0) {
             selectPool(0)
-        } else {
+        }
+        else {
             selectPool(1)
         }
     }
@@ -47,14 +48,14 @@ fun deletePool(index: Int) {
 fun deletePool(pool: Pool) {
     val ind = pools.indexOf(pool)
     pools.remove(pool)
-    if(activePool == pool) {
-        if (pools.size == 0) {
-            pools.add(Pool("Default"))
-            selectPool(0)
-        } else if (ind == pools.size) {
-            selectPool(pools.size - 1)
-        } else {
-            selectPool(ind)
+    if (activePool == pool) {
+        when {
+            pools.size == 0 -> {
+                pools.add(Pool("Default"))
+                selectPool(0)
+            }
+            ind == pools.size -> selectPool(pools.size - 1)
+            else -> selectPool(ind)
         }
     }
 }
@@ -73,7 +74,8 @@ fun savePools(context: Context) {
     out.close()
     fileOut.close()
 
-    val sharedPreferences = context.getSharedPreferences(context.getString(R.string.selection_file_key), Context.MODE_PRIVATE)
+    val sharedPreferences =
+        context.getSharedPreferences(context.getString(R.string.selection_file_key), Context.MODE_PRIVATE)
     val editor = sharedPreferences.edit()
     val activeIndex = pools.indexOf(activePool)
     editor.putInt("active_pool", activeIndex)
@@ -98,8 +100,9 @@ fun loadPools(context: Context) {
     }
 
     // Set the active pool
-    val sharedPreferences = context.getSharedPreferences(context.getString(R.string.selection_file_key), Context.MODE_PRIVATE)
-    val activeIndex = sharedPreferences.getInt("active_pool",0)
+    val sharedPreferences =
+        context.getSharedPreferences(context.getString(R.string.selection_file_key), Context.MODE_PRIVATE)
+    val activeIndex = sharedPreferences.getInt("active_pool", 0)
     activePool = pools[activeIndex]
 }
 
