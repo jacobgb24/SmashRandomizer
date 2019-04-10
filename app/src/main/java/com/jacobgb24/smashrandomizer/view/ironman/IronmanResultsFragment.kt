@@ -15,6 +15,7 @@ import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.IronmanResultsAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.Ironman
+import com.jacobgb24.smashrandomizer.model.mainCharacterList
 import com.jacobgb24.smashrandomizer.playSound
 import com.jacobgb24.smashrandomizer.setHelp
 import kotlinx.android.synthetic.main.fragment_ironman.view.*
@@ -56,8 +57,7 @@ class IronmanResultsFragment : Fragment() {
             (activity as MainActivity).removeAllFragments()
         }
 
-        if (ironman.getPercentage() == "100%") {
-//            playSound(activity!!, R.raw.congrats)
+        if (ironman.getPercentage() == "100%" && ironman.chars.size == mainCharacterList.size) {
             playSound(activity!!, R.raw.congrats, 1000)
         }
         return view

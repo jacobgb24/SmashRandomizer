@@ -11,6 +11,7 @@ import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
+import com.jacobgb24.smashrandomizer.getBoolPref
 import com.jacobgb24.smashrandomizer.model.Ironman
 import com.jacobgb24.smashrandomizer.setHelp
 import kotlinx.android.synthetic.main.fragment_ironman.view.*
@@ -42,6 +43,13 @@ class IronmanFragment : Fragment() {
             startResults(false)
         }
         setCurrentChar(view)
+
+        if (getBoolPref("pref_hide_deck", view.context)) {
+            view.layout_ironman_deck.visibility = View.GONE
+        }
+        else {
+            view.layout_ironman_deck.visibility = View.VISIBLE
+        }
 
         return view
     }

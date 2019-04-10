@@ -34,7 +34,8 @@ data class Pool(var name: String): Serializable {
 
         if (selected.size == 1){
             charNum = selected[0].first
-        } else {
+        }
+        else {
             do {
                 charNum = selected[Random().nextInt(selected.size)].first
             } while(current?.appearanceOrder?.equals(charNum) == true) // have to do == true to make current being null = false

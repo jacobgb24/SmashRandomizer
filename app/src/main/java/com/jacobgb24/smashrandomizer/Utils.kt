@@ -1,6 +1,7 @@
 package com.jacobgb24.smashrandomizer
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
@@ -10,6 +11,7 @@ import android.graphics.drawable.RippleDrawable
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.CountDownTimer
+import android.preference.PreferenceManager
 import androidx.core.content.ContextCompat
 import androidx.appcompat.widget.TooltipCompat
 import android.widget.ImageButton
@@ -97,3 +99,7 @@ fun playSound(context: Context, sound: Int, delay: Long = 0) {
 
 fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toInt()
 fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+fun getBoolPref(pref: String, context: Context): Boolean {
+    return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(pref, false)
+}

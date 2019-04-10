@@ -16,6 +16,7 @@
         android:includeFontPadding="false"
         android:fontFamily="@font/css_font"
         android:textSize="24dp"
+        android:paddingStart="8dp"
         android:gravity="center_vertical"
         tools:ignore="SpUsage"
         android:id="@+id/text_character_number_ironman"
@@ -54,6 +55,7 @@
         android:padding="24dp"
         android:gravity="center"
         android:layout_centerHorizontal="true"
+        android:id="@+id/layout_ironman_deck"
         android:layout_below="@+id/text_character_name_ironman">
         <TextView
             android:layout_width="wrap_content"
