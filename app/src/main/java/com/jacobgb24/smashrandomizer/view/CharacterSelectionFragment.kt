@@ -11,9 +11,7 @@ import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.FragOnBackPressed
 import com.jacobgb24.smashrandomizer.controller.MainActivity
-import com.jacobgb24.smashrandomizer.model.activePool
-import com.jacobgb24.smashrandomizer.model.deletePool
-import com.jacobgb24.smashrandomizer.model.savePools
+import com.jacobgb24.smashrandomizer.model.*
 import kotlinx.android.synthetic.main.fragment_character_selection.view.*
 
 
@@ -21,7 +19,7 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
 
     private val fragTag = "CharacterSelectionFrag"
     private lateinit var adapter: CharacterSelectionAdapter
-    private var activePoolCopy = activePool.copy()
+    private lateinit var activePoolBackup: Pool
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +33,8 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
         adapter = CharacterSelectionAdapter(view.context)
         view.grid_character_selection.adapter = adapter
         (activity as MainActivity).supportActionBar!!.title = "Edit Pool"
+
+        activePoolBackup = activePool.copy()
 
         view.button_pool_save.addRippleFG()
         view.button_pool_save.setOnClickListener {
@@ -61,11 +61,11 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
             setTitle("Cancel Pool Edits?")
             setMessage("Leaving without saving will remove the changes you have just made.")
             setPositiveButton("Leave") {dialog, _ ->
-                if (activePoolCopy.size() == 0) { // this means a new pool since otherwise activePool.size > 1
+                if (activePoolBackup.size() == 0) { // this means a new pool since otherwise activePool.size > 1
                     deletePool(activePool)
                 }
                 else {
-                    activePool = activePoolCopy.copy()
+                    activePool = activePoolBackup.copy()
                 }
                 (activity as MainActivity).removeFragment()
                 dialog.dismiss()

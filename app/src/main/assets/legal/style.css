@@ -1,0 +1,12 @@
+body {
+    font-family: sans-serif;
+}
+pre {
+    background-color: #eeeeee;
+    padding: 2pt;
+    white-space: pre-wrap;
+}
+h2 {
+    padding-top: 8pt;
+    padding-left: 4pt;
+}

@@ -59,6 +59,12 @@ class PreferenceFragment: PreferenceFragmentCompat() {
             webDialog("file:///android_asset/legal/legal_disclaimer.html")
             true
         }
+
+        val privacyPolicyPref = findPreference("pref_privacy_policy")
+        privacyPolicyPref.setOnPreferenceClickListener {
+            webDialog("file:///android_asset/legal/privacy_policy.html")
+            true
+        }
     }
 
     private fun webDialog(url: String) {

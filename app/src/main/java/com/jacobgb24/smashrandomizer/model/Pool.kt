@@ -1,5 +1,6 @@
 package com.jacobgb24.smashrandomizer.model
 
+import android.util.Log
 import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
@@ -95,8 +96,15 @@ data class Pool(var name: String): Serializable {
 
 
     fun copy(): Pool {
+        Log.e("POOL", "Creating copy of $name")
         val newPool = Pool(name)
-        newPool.characters = ArrayList(characters.toMutableList())
+        newPool.characters = mainCharacterList.rawRepresentation()
+        for ((pos, pair) in characters.withIndex()) {
+            if (!pair.second) {
+                Log.e("POOL", "Character at pos $pos not selected. Toggling")
+                newPool.toggle(pos)
+            }
+        }
         return newPool
     }
 

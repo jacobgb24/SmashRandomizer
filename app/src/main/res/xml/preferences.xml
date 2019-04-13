@@ -23,6 +23,9 @@
         <Preference
                 android:key="pref_legal"
                 android:title="Legal Disclaimer"/>
+        <Preference
+            android:key="pref_privacy_policy"
+            android:title="Privacy Policy"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="About">
