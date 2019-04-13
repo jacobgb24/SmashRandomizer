@@ -1,0 +1,11 @@
+This app uses firebase crashlytics to track bugs and issues. 
+
+Crashlytics collects the following data:
+Instance IDs
+Crash traces
+
+How it helps: Crash Reporting uses crash stack traces to associate crashes with a project, send email alerts to project members and display them in the Firebase Console, and help Firebase customers debug crashes. It uses Instance IDs to measure number of users impacted by a crash.
+
+Retention: Crash Reporting retains crash stack traces for 180 days. Firebase retains Instance IDs until the Firebase customer makes an API call to delete the ID. After the call, data is removed from live and backup systems within 180 days.
+
+(Above information from https://firebase.google.com/support/privacy/#examples_of_end-user_personal_data_processed_by_firebase). 
