@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:title="Settings">
-        <!--<CheckBoxPreference-->
-            <!--android:key="pref_allow_repeat"-->
-            <!--android:title="Allow Repeating"-->
-            <!--android:summary="Allow the same character to be chosen back to back"-->
-            <!--/>-->
+    <PreferenceCategory android:title="Settings">
         <CheckBoxPreference
-                android:key="pref_hide_deck"
-                android:title="Hide Ironman Deck"
-                android:summary="Hides the upcoming character so it's a surprise."
-                />
+            android:key="pref_hide_deck"
+            android:title="Hide Ironman Deck"
+            android:summary="Hides the upcoming character so it's a surprise."/>
+        <Preference
+            android:key="pref_clear"
+            android:title="Clear all pools"
+            android:summary="This will remove all user-created pools."/>
     </PreferenceCategory>
 
-    <PreferenceCategory
-            android:title="Legal">
+    <PreferenceCategory android:title="Legal">
         <Preference
                 android:key="pref_glide"
                 android:title="Glide Library"/>
@@ -27,8 +23,8 @@
             android:key="pref_privacy_policy"
             android:title="Privacy Policy"/>
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="About">
+
+    <PreferenceCategory android:title="About">
         <Preference
             android:key="pref_version"
             android:title="Version "/>

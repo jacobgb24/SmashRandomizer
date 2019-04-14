@@ -70,7 +70,10 @@ fun ImageButton.addRippleFG(color: String = "#44DEDEDE") {
  */
 fun getColor(context: Context, color: Int, alpha: Int = 255): Int {
     val baseColor = ContextCompat.getColor(context, color)
-    return Color.argb(alpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor))
+    return when (color == android.R.color.transparent) {
+        true -> color  // leave transparent alone, otherwise we'd apply alpha to it
+        false -> Color.argb(alpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor))
+    }
 }
 
 

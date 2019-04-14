@@ -93,6 +93,15 @@ data class Pool(var name: String): Serializable {
         return ArrayList(characters.filter { it.second })
     }
 
+    fun checkNewCharacters() {
+        val allCharacters = mainCharacterList.rawRepresentation()
+        for (character in allCharacters) {
+            if (character.first !in characters.map { it.first }) {
+                characters.add(Pair(character.first, false))
+            }
+        }
+    }
+
 
 
     fun copy(): Pool {
@@ -101,7 +110,6 @@ data class Pool(var name: String): Serializable {
         newPool.characters = mainCharacterList.rawRepresentation()
         for ((pos, pair) in characters.withIndex()) {
             if (!pair.second) {
-                Log.e("POOL", "Character at pos $pos not selected. Toggling")
                 newPool.toggle(pos)
             }
         }

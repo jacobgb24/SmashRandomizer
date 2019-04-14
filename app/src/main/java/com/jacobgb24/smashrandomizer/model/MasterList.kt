@@ -57,7 +57,6 @@ fun generateCharacters(context: Context): ArrayList<Character> {
             "bowserJr.webp" -> "Bowser Jr."
             "mrGame&Watch.webp" -> "Mr. Game & Watch"
             "pacman.webp" -> "PAC-MAN"
-            "rosalina&Luma.webp" -> "Rosalina & Luma"
             "pokemonTrainer.webp" -> "Pokémon Trainer"
             else -> getNameFromPath(image)
         }

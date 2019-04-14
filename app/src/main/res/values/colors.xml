@@ -5,6 +5,7 @@
     <color name="colorAccent">#003aa6</color>
     <color name="colorAccentDark">#001a9b</color>
     <color name="darkText">#555555</color>
+    <color name="lightGray">#CCCCCC</color>
     <!-- Colors below from smash 64. Dark versions generated -->
     <color name="green">#4eb94e</color>
     <color name="red">#ed3636</color>

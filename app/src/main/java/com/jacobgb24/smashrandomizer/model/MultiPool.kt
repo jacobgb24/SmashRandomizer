@@ -1,5 +1,6 @@
 package com.jacobgb24.smashrandomizer.model
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.jacobgb24.smashrandomizer.R
 import kotlin.collections.ArrayList
@@ -91,18 +92,37 @@ fun loadPools(context: Context) {
         // Load up the list of custom pools
         val list = input.readObject() as List<*>
         pools = ArrayList(list.filterIsInstance<Pool>())
+        for (pool in pools) {
+            pool.checkNewCharacters()
+        }
 
         input.close()
         fileIn.close()
     } catch (e: Exception) {
         pools = ArrayList()
         newPool("Default")
+        activePool = pools[0]
+        return
     }
 
     // Set the active pool
     val sharedPreferences =
         context.getSharedPreferences(context.getString(R.string.selection_file_key), Context.MODE_PRIVATE)
     val activeIndex = sharedPreferences.getInt("active_pool", 0)
-    activePool = pools[activeIndex]
+    val selectedPool = if (activeIndex < pools.size && activeIndex >= 0) activeIndex else 0
+    activePool = pools[selectedPool]
+}
+
+
+@SuppressLint("ApplySharedPref")
+fun clearPools(context: Context): Boolean {
+    val file = File(context.filesDir, "pools")
+    context.getSharedPreferences(context.getString(R.string.selection_file_key), Context.MODE_PRIVATE)
+        .edit().clear().commit()
+    pools = ArrayList()
+    newPool("Default")
+    activePool = pools[0]
+    return file.delete()
+
 }
 

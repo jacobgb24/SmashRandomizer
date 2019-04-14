@@ -16,6 +16,10 @@ import android.content.Intent
 import android.net.Uri
 import android.webkit.WebView
 import androidx.appcompat.app.AlertDialog
+import com.jacobgb24.smashrandomizer.model.activePool
+import com.jacobgb24.smashrandomizer.model.clearPools
+import com.jacobgb24.smashrandomizer.model.deletePool
+import com.jacobgb24.smashrandomizer.playSound
 
 
 class PreferenceFragment: PreferenceFragmentCompat() {
@@ -33,20 +37,25 @@ class PreferenceFragment: PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, null)
 
-        val versionPref = findPreference("pref_version")
-        versionPref.title = "Version ${BuildConfig.VERSION_NAME}"
-
-        val githubPref = findPreference("pref_github")
-        githubPref.setOnPreferenceClickListener {
-            try {
-                startActivity(
-                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jacobgb24/SmashRandomizer"))
-                )
-            } catch (e: Exception) {
-                Toast.makeText(activity, "Could not open link", Toast.LENGTH_SHORT).show()
+        val clearPref = findPreference("pref_clear")
+        clearPref.setOnPreferenceClickListener {
+            val builder = android.app.AlertDialog.Builder(activity)
+            with(builder) {
+                setTitle("Clear all pool data?")
+                setMessage("This cannot be undone.")
+                setPositiveButton("Clear") { dialog, _ ->
+                    clearPools(activity!!)
+                    dialog.dismiss()
+                }
+                setNegativeButton("Cancel") { dialog, _ ->
+                    dialog.dismiss()
+                }
             }
+            val dialog = builder.create()
+            dialog.show()
             true
         }
+
 
         val glidePref = findPreference("pref_glide")
         glidePref.setOnPreferenceClickListener {
@@ -63,6 +72,30 @@ class PreferenceFragment: PreferenceFragmentCompat() {
         val privacyPolicyPref = findPreference("pref_privacy_policy")
         privacyPolicyPref.setOnPreferenceClickListener {
             webDialog("file:///android_asset/legal/privacy_policy.html")
+            true
+        }
+
+        val versionPref = findPreference("pref_version")
+        versionPref.title = "Version ${BuildConfig.VERSION_NAME}"
+        var versionClicks = 0
+        versionPref.setOnPreferenceClickListener {
+            versionClicks++
+            if (versionClicks == 12) {
+                playSound(activity!!, R.raw.wow, 500)
+                versionClicks = 0
+            }
+            true
+        }
+
+        val githubPref = findPreference("pref_github")
+        githubPref.setOnPreferenceClickListener {
+            try {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jacobgb24/SmashRandomizer"))
+                )
+            } catch (e: Exception) {
+                Toast.makeText(activity, "Could not open link", Toast.LENGTH_SHORT).show()
+            }
             true
         }
     }

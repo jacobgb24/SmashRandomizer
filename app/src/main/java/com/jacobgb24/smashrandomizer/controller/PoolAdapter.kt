@@ -38,19 +38,12 @@ class PoolAdapter(private val context: Context, private val clickHandler: PoolCl
     class PoolViewHolder(val v: View) {
         val name: TextView = v.text_list_pool_name
         val size: TextView = v.text_list_pool_size
-        //        val charList: WrappingGridView = v.grid_pool_chars
         private val card: MaterialCardView = v.card_pool
 
         fun bind(pool: Pool, handler: PoolClickHandler, pos: Int) {
             name.text = pool.name
             size.text = "Size: ${pool.size()}"
-//            charList.adapter = CharactersAdapter(v.context, pool.getSelected())
-//            if (pool != activePool) {
-//                charList.visibility = View.GONE
-//            }
-//            else {
-//                charList.visibility = View.VISIBLE
-//            }
+
             if (pool == activePool) {
                 card.strokeColor = getColor(v.context, R.color.red)
             }

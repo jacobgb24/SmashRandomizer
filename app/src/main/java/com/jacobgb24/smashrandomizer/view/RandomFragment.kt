@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.*
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jacobgb24.smashrandomizer.*
 import com.jacobgb24.smashrandomizer.controller.MainActivity
@@ -58,8 +59,12 @@ class RandomFragment : Fragment() {
 
 
     private fun setCurrentChar(view: View = this.view!!) {
-        Glide.with(this).load(currentCharacter.portraitUri).override(1200, 1200)
-            .transition(DrawableTransitionOptions.withCrossFade()).into(view.image_character_random)
+        Glide.with(this).load(currentCharacter.portraitUri)
+            .override(1200, 1200)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .into(view.image_character_random)
+
         view.text_character_name_random.text = currentCharacter.name
         view.text_character_number_random.text = currentCharacter.getOrderString()
         view.image_character_random.setHelp("Current Character: ${currentCharacter.name}")

@@ -2,6 +2,7 @@ package com.jacobgb24.smashrandomizer.controller
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.core.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +15,8 @@ import kotlinx.android.synthetic.main.item_pool_character.view.*
 
 
 class IronmanResultsAdapter(
-    private val context: Context,
-    private var characterList: ArrayList<Character>,
-    private val finalPos: Int
-)
-    : BaseAdapter() {
+    private val context: Context, private var characterList: ArrayList<Character>, private val finalPos: Int
+) : BaseAdapter() {
 
     override fun getCount(): Int {
         return characterList.size
@@ -39,19 +37,25 @@ class IronmanResultsAdapter(
             with(image) {
                 setHelp(character.name)
                 setImageDrawable(character.iconDrawable)
-                when(state) {
-                    ResultState.WON -> setBackgroundColor(getColor(v.context, R.color.green, 60))
-                    ResultState.LOST -> setBackgroundColor(getColor(v.context, R.color.red, 120))
+                when (state) {
+                    ResultState.WON -> {
+                        foreground = null
+                        setBackgroundColor(getColor(v.context, R.color.green, 60))
+                    }
+                    ResultState.LOST -> {
+                        foreground = null
+                        setBackgroundColor(getColor(v.context, R.color.red, 120))
+                    }
                     else -> {
-                        setSaturation(10)
-                        setBackgroundColor(ContextCompat.getColor(v.context, android.R.color.transparent))
+                        foreground = ColorDrawable(getColor(v.context, R.color.lightGray, 120))
+                        setBackgroundColor(getColor(v.context, android.R.color.transparent))
                     }
                 }
             }
         }
     }
 
-    enum class ResultState { WON, LOST, NOT_SEEN}
+    enum class ResultState { WON, LOST, NOT_SEEN }
 
     private fun getState(charPos: Int, finalPos: Int): ResultState {
         return when {
