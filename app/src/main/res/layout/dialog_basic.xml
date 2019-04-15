@@ -5,14 +5,4 @@
     android:layout_width="wrap_content"
     android:id="@+id/dialog_root"
     android:layout_height="wrap_content">
-
-    <EditText
-        android:id="@+id/edittext_rename_pool"
-        android:layout_margin="16dp"
-        android:inputType="textEmailAddress"
-        android:importantForAutofill="auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
 </LinearLayout>

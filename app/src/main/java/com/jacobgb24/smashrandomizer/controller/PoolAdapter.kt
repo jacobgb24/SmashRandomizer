@@ -13,9 +13,7 @@ import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.model.Pool
 import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.model.pools
-import com.jacobgb24.smashrandomizer.model.selectPool
 import com.jacobgb24.smashrandomizer.getColor
-import com.jacobgb24.smashrandomizer.toPx
 import com.jacobgb24.smashrandomizer.view.PoolClickHandler
 import kotlinx.android.synthetic.main.item_pool.view.*
 

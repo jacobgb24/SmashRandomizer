@@ -55,29 +55,6 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    private fun showSaveAlert() {
-        val builder = AlertDialog.Builder(activity)
-        with(builder) {
-            setTitle("Cancel Pool Edits?")
-            setMessage("Leaving without saving will remove the changes you have just made.")
-            setPositiveButton("Leave") {dialog, _ ->
-                if (activePoolBackup.size() == 0) { // this means a new pool since otherwise activePool.size > 1
-                    deletePool(activePool)
-                }
-                else {
-                    activePool = activePoolBackup.copy()
-                }
-                (activity as MainActivity).removeFragment()
-                dialog.dismiss()
-            }
-            setNegativeButton("Keep Editing") {dialog, _ ->
-                dialog.dismiss()
-            }
-        }
-        val dialog = builder.create()
-        dialog.show()
-    }
-
     private fun attemptSave() {
         if (activePool.getSelected().size < 2) {
             Toast.makeText(activity, "A pool must have at least two selections", Toast.LENGTH_SHORT).show()
@@ -109,7 +86,7 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
 
     override fun onBackPressed(): Boolean {
         Log.e(fragTag, "onBack Called")
-        showSaveAlert()
+        showLeaveEditDialog(this, activePoolBackup)
         return true
     }
 

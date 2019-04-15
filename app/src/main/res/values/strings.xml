@@ -16,9 +16,16 @@
     <string name="on_deck">On Deck:</string>
     <string name="lose">Lose</string>
     <string name="win">Win</string>
-    <string name="delete_pool">Delete the active pool</string>
-    <string name="rename_pool">Rename the active pool</string>
+    <string name="delete_active_pool">Delete the active pool</string>
+    <string name="rename_active_pool">Rename the active pool</string>
     <string name="selection_banner">Long-click a character to see their name.</string>
     <string name="got_it">Got it</string>
     <string name="save">Save</string>
+    <string name="rename_pool">Rename Pool</string>
+    <string name="cancel">CANCEL</string>
+    <string name="rename">RENAME</string>
+    <string name="delete">DELETE</string>
+    <string name="new_pool">New Pool</string>
+    <string name="name">Name</string>
+    <string name="select_all_characters_initially">Select all characters initially</string>
 </resources>

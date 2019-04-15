@@ -39,20 +39,7 @@ class PreferenceFragment: PreferenceFragmentCompat() {
 
         val clearPref = findPreference("pref_clear")
         clearPref.setOnPreferenceClickListener {
-            val builder = android.app.AlertDialog.Builder(activity)
-            with(builder) {
-                setTitle("Clear all pool data?")
-                setMessage("This cannot be undone.")
-                setPositiveButton("Clear") { dialog, _ ->
-                    clearPools(activity!!)
-                    dialog.dismiss()
-                }
-                setNegativeButton("Cancel") { dialog, _ ->
-                    dialog.dismiss()
-                }
-            }
-            val dialog = builder.create()
-            dialog.show()
+            showClearPoolDialog(this)
             true
         }
 

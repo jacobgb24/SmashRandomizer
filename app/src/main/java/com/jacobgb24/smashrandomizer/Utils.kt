@@ -104,7 +104,7 @@ fun playSound(context: Context, sound: Int, delay: Long = 0) {
 
 
 fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toInt()
-fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+fun Int.asDP(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 fun getBoolPref(pref: String, context: Context): Boolean {
     return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(pref, false)

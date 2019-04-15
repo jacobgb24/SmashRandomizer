@@ -2,6 +2,7 @@ package com.jacobgb24.smashrandomizer.model
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import com.jacobgb24.smashrandomizer.R
 import kotlin.collections.ArrayList
 import java.io.*
@@ -48,6 +49,10 @@ fun deletePool(index: Int) {
 
 fun deletePool(pool: Pool) {
     val ind = pools.indexOf(pool)
+    if (ind < 0) {
+        Log.e("POOL", "Pool not found to delete Expected ${pool.name} of size ${pool.size()}")
+        return
+    }
     pools.remove(pool)
     if (activePool == pool) {
         when {

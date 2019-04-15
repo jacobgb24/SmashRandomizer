@@ -47,16 +47,16 @@ class PoolListFragment : Fragment(), PoolClickHandler {
 
 //
         view.button_change_pool.setOnClickListener {
-            newPoolDialog()
+            showNewPoolDialog(this)
         }
         view.button_pool_edit.setOnClickListener {
             (activity as MainActivity).addFragment(CharacterSelectionFragment())
         }
         view.button_pool_delete.setOnClickListener {
-            deletePoolDialog()
+            showDeletePoolDialog(this)
         }
         view.button_pool_rename.setOnClickListener {
-            renameDialog()
+            showRenameDialog(this)
         }
 
         return view
@@ -68,82 +68,11 @@ class PoolListFragment : Fragment(), PoolClickHandler {
         updateView()
     }
 
-    private fun updateView() {
+    fun updateView() {
         poolAdapter.notifyDataSetChanged()
         view!!.text_pool_current.text = activePool.name
         currentCharsAdapter.characterList = activePool.getSelected()
         currentCharsAdapter.notifyDataSetChanged()
-    }
-
-    private fun newPoolDialog() {
-        val builder = AlertDialog.Builder(activity)
-        val view = requireActivity().layoutInflater.inflate(R.layout.dialog_new_pool, null)
-        val poolName = view.edittext_new_pool
-        val check = view.checkbox_new_pool_sel_all
-        with(builder) {
-            setTitle("New Pool")
-            setView(view)
-            setPositiveButton("Create") {dialog, _ ->
-                var name = poolName.text.toString()
-                if (name.isEmpty()) {
-                    name = "Unnamed Pool"
-                }
-                newPool(name, check.isChecked)
-                updateView()
-                dialog.dismiss()
-                (activity as MainActivity).addFragment(CharacterSelectionFragment())
-            }
-            setNegativeButton("Cancel") {dialog, _ ->
-                dialog.dismiss()
-            }
-        }
-        val dialog = builder.create()
-        dialog.show()
-    }
-
-    private fun deletePoolDialog() {
-        val builder = AlertDialog.Builder(activity)
-        with(builder) {
-            setTitle("Delete ${activePool.name}?")
-            setPositiveButton("Delete") { dialog, _ ->
-                deletePool(activePool)
-                updateView()
-                dialog.dismiss()
-            }
-            setNegativeButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
-            }
-        }
-        val dialog = builder.create()
-        dialog.show()
-    }
-
-    private fun renameDialog() {
-        val builder = AlertDialog.Builder(activity)
-        val view = requireActivity().layoutInflater.inflate(R.layout.dialog_rename_pool, null)
-        val poolName = view.edittext_rename_pool
-        poolName.setText(activePool.name)
-        poolName.setSelection(poolName.text.length)
-        with(builder) {
-            setTitle("Rename Pool")
-            setView(view)
-            setPositiveButton("Rename") { dialog, _ ->
-                var name = poolName.text.toString()
-                if (name.isEmpty()) {
-                    name = "Unnamed Pool"
-                }
-                activePool.name = name
-                updateView()
-                dialog.dismiss()
-            }
-            setNegativeButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
-            }
-        }
-        val dialog = builder.create()
-        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
-
-        dialog.show()
     }
 
 }
