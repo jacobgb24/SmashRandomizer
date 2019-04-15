@@ -47,16 +47,16 @@ class PoolListFragment : Fragment(), PoolClickHandler {
 
 //
         view.button_change_pool.setOnClickListener {
-            showNewPoolDialog(this)
+            showNewPoolDialog()
         }
         view.button_pool_edit.setOnClickListener {
             (activity as MainActivity).addFragment(CharacterSelectionFragment())
         }
         view.button_pool_delete.setOnClickListener {
-            showDeletePoolDialog(this)
+            showDeletePoolDialog()
         }
         view.button_pool_rename.setOnClickListener {
-            showRenameDialog(this)
+            showRenameDialog()
         }
 
         return view
@@ -68,11 +68,87 @@ class PoolListFragment : Fragment(), PoolClickHandler {
         updateView()
     }
 
-    fun updateView() {
+    private fun updateView() {
         poolAdapter.notifyDataSetChanged()
         view!!.text_pool_current.text = activePool.name
         currentCharsAdapter.characterList = activePool.getSelected()
         currentCharsAdapter.notifyDataSetChanged()
+    }
+
+    private fun showDeletePoolDialog() {
+        val view = requireActivity().layoutInflater.inflate(R.layout.dialog_basic, null)
+
+        view.setTitle("Delete ${activePool.name}?")
+        val (negButton, posButton) = view.addButtons("Cancel", "Delete")
+
+        val dialog = createDialog(context!!, view)
+
+        negButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        posButton.setOnClickListener {
+            deletePool(activePool)
+            updateView()
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun showRenameDialog() {
+        val view = requireActivity().layoutInflater.inflate(R.layout.dialog_rename_pool, null)
+        view.setTitle("Rename Pool")
+        val (negButton, posButton) = view.addButtons("Cancel", "Rename")
+
+        val poolName = view.edittext_rename_pool
+        poolName.setText(activePool.name)
+        poolName.setSelection(poolName.text.length)
+        val dialog = createDialog(context!!, view)
+
+        negButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        posButton.setOnClickListener {
+            var name = poolName.text.toString()
+            if (name.isEmpty()) {
+                name = "Unnamed Pool"
+            }
+            activePool.name = name
+            updateView()
+            dialog.dismiss()
+        }
+
+
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        dialog.show()
+    }
+
+
+    private fun showNewPoolDialog() {
+        val view = requireActivity().layoutInflater.inflate(R.layout.dialog_new_pool, null)
+        view.setTitle("New Pool")
+        val (negButton, posButton) = view.addButtons("Cancel", "Create")
+
+        val poolName = view.edittext_new_pool
+        val checkbox = view.checkbox_new_pool_sel_all
+
+        val dialog = createDialog(context!!, view)
+
+        negButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        posButton.setOnClickListener {
+            var name = poolName.text.toString()
+            if (name.isEmpty()) {
+                name = "Unnamed Pool"
+            }
+            newPool(name, checkbox.isChecked)
+            updateView()
+            dialog.dismiss()
+            (activity as MainActivity).addFragment(CharacterSelectionFragment())
+        }
+
+        dialog.show()
     }
 
 }

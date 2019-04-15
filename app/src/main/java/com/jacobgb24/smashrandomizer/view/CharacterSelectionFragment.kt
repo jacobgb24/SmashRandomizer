@@ -86,8 +86,33 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
 
     override fun onBackPressed(): Boolean {
         Log.e(fragTag, "onBack Called")
-        showLeaveEditDialog(this, activePoolBackup)
+        showLeaveEditDialog()
         return true
+    }
+
+    private fun showLeaveEditDialog() {
+        val view = requireActivity().layoutInflater.inflate(R.layout.dialog_basic, null)
+        view.setTitle("Cancel Pool Edits?")
+        view.setMessage("Leaving without saving will remove the changes you have just made.")
+        val (negButton, posButton) = view.addButtons("Keep Editing", "Leave")
+
+        val dialog = createDialog(context!!, view)
+
+        negButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        posButton.setOnClickListener {
+            if (activePoolBackup.size() == 0) { // this means a new pool since otherwise activePool.size > 1
+                deletePool(activePool)
+            }
+            else {
+                activePool = activePoolBackup.copy()
+            }
+            (activity as MainActivity).removeFragment()
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
 }
