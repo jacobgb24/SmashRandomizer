@@ -1,20 +1,19 @@
 package com.jacobgb24.smashrandomizer.view
 
-import android.app.AlertDialog
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.controller.PoolAdapter
-import com.jacobgb24.smashrandomizer.model.*
+import com.jacobgb24.smashrandomizer.model.activePool
+import com.jacobgb24.smashrandomizer.model.deletePool
+import com.jacobgb24.smashrandomizer.model.newPool
+import com.jacobgb24.smashrandomizer.model.selectPool
 import kotlinx.android.synthetic.main.dialog_new_pool.view.*
 import kotlinx.android.synthetic.main.dialog_rename_pool.view.*
 import kotlinx.android.synthetic.main.fragment_pool_list.view.*
@@ -43,9 +42,8 @@ class PoolListFragment : Fragment(), PoolClickHandler {
         view.grid_pool_list_chars.adapter = currentCharsAdapter
         view.list_pool.adapter = poolAdapter
         view.text_pool_current.text = activePool.name
-        (activity as MainActivity).supportActionBar!!.title = "Pools"
+        (activity as MainActivity).supportActionBar!!.title = getString(R.string.pools)
 
-//
         view.button_change_pool.setOnClickListener {
             showNewPoolDialog()
         }
@@ -79,7 +77,7 @@ class PoolListFragment : Fragment(), PoolClickHandler {
         val view = requireActivity().layoutInflater.inflate(R.layout.dialog_basic, null)
 
         view.setTitle("Delete ${activePool.name}?")
-        val (negButton, posButton) = view.addButtons("Cancel", "Delete")
+        val (negButton, posButton) = view.addButtons(getString(R.string.cancel), getString(R.string.delete))
 
         val dialog = createDialog(context!!, view)
 
@@ -97,8 +95,8 @@ class PoolListFragment : Fragment(), PoolClickHandler {
 
     private fun showRenameDialog() {
         val view = requireActivity().layoutInflater.inflate(R.layout.dialog_rename_pool, null)
-        view.setTitle("Rename Pool")
-        val (negButton, posButton) = view.addButtons("Cancel", "Rename")
+        view.setTitle(getString(R.string.rename_pool))
+        val (negButton, posButton) = view.addButtons(getString(R.string.cancel), getString(R.string.rename))
 
         val poolName = view.edittext_rename_pool
         poolName.setText(activePool.name)
@@ -111,7 +109,7 @@ class PoolListFragment : Fragment(), PoolClickHandler {
         posButton.setOnClickListener {
             var name = poolName.text.toString()
             if (name.isEmpty()) {
-                name = "Unnamed Pool"
+                name = getString(R.string.unnamed_pool)
             }
             activePool.name = name
             updateView()
@@ -126,8 +124,8 @@ class PoolListFragment : Fragment(), PoolClickHandler {
 
     private fun showNewPoolDialog() {
         val view = requireActivity().layoutInflater.inflate(R.layout.dialog_new_pool, null)
-        view.setTitle("New Pool")
-        val (negButton, posButton) = view.addButtons("Cancel", "Create")
+        view.setTitle(getString(R.string.new_pool))
+        val (negButton, posButton) = view.addButtons(getString(R.string.cancel), getString(R.string.create))
 
         val poolName = view.edittext_new_pool
         val checkbox = view.checkbox_new_pool_sel_all
@@ -140,7 +138,7 @@ class PoolListFragment : Fragment(), PoolClickHandler {
         posButton.setOnClickListener {
             var name = poolName.text.toString()
             if (name.isEmpty()) {
-                name = "Unnamed Pool"
+                name = getString(R.string.unnamed_pool)
             }
             newPool(name, checkbox.isChecked)
             updateView()

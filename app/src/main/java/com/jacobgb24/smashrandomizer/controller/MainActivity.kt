@@ -1,14 +1,16 @@
 package com.jacobgb24.smashrandomizer.controller
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import android.util.Log
-import android.view.MenuItem
-import com.jacobgb24.smashrandomizer.model.*
-import com.jacobgb24.smashrandomizer.model.loadDefaultCharacter
+import com.jacobgb24.smashrandomizer.model.generateCharacters
+import com.jacobgb24.smashrandomizer.model.loadPools
+import com.jacobgb24.smashrandomizer.model.mainCharacterList
+import com.jacobgb24.smashrandomizer.model.savePools
 import com.jacobgb24.smashrandomizer.view.RandomFragment
 
 

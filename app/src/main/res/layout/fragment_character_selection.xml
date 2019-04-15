@@ -19,6 +19,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:layout_centerVertical="true"
+            android:fontFamily="@font/css_font_light"
             android:text="@string/selection_banner"
             android:layout_toStartOf="@id/button_selection_banner"
             android:textSize="14sp"/>
@@ -29,8 +30,10 @@
             android:layout_alignParentEnd="true"
             style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
             android:text="@string/got_it"
+            android:textAllCaps="false"
+            android:fontFamily="@font/css_font"
             android:id="@+id/button_selection_banner"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:textColor="@color/colorAccent"/>
 
         <View
             android:layout_width="match_parent"

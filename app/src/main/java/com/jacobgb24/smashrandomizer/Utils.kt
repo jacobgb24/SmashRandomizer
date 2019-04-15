@@ -1,25 +1,18 @@
 package com.jacobgb24.smashrandomizer
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.ColorMatrix
-import android.graphics.ColorMatrixColorFilter
-import android.graphics.PorterDuff
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.RippleDrawable
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.CountDownTimer
 import android.preference.PreferenceManager
-import androidx.core.content.ContextCompat
-import androidx.appcompat.widget.TooltipCompat
 import android.widget.ImageButton
 import android.widget.ImageView
-import com.bumptech.glide.load.engine.Resource
-import java.lang.Exception
+import androidx.appcompat.widget.TooltipCompat
+import androidx.core.content.ContextCompat
 
 /**
  * Wrapper for setting both the contentDescription and tooltipText
@@ -33,23 +26,6 @@ fun ImageView.setHelp(str: String) {
     else {
         TooltipCompat.setTooltipText(this, str)
     }
-}
-
-/**
- * Sets the saturation level of an image.
- * Important note: The drawable has a copy made and then the filter is applied. If this wasn't done,
- * every other instance of the drawable would be desaturated too
- * @param saturation An int between 0 (gray) and 100 (full color)
- */
-fun ImageView.setSaturation(saturation: Int) {
-    if (saturation > 100 || saturation < 0) {
-        throw Exception("Saturation must be between 0 and 100")
-    }
-    val matrix = ColorMatrix()
-    matrix.setSaturation(saturation / 100f)
-    setImageDrawable(drawable.constantState?.newDrawable()?.mutate())
-    colorFilter = ColorMatrixColorFilter(matrix)
-    imageTintMode = PorterDuff.Mode.DARKEN
 }
 
 

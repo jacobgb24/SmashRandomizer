@@ -1,14 +1,13 @@
 package com.jacobgb24.smashrandomizer.view
 
-import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.*
 import android.widget.Toast
-import com.jacobgb24.smashrandomizer.controller.CharacterSelectionAdapter
+import androidx.fragment.app.Fragment
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.addRippleFG
+import com.jacobgb24.smashrandomizer.controller.CharacterSelectionAdapter
 import com.jacobgb24.smashrandomizer.controller.FragOnBackPressed
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.*
@@ -20,6 +19,7 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
     private val fragTag = "CharacterSelectionFrag"
     private lateinit var adapter: CharacterSelectionAdapter
     private lateinit var activePoolBackup: Pool
+    private var activePoolPos: Int = getActiveIndex()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,7 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
         val view = inflater.inflate(R.layout.fragment_character_selection, container, false)
         adapter = CharacterSelectionAdapter(view.context)
         view.grid_character_selection.adapter = adapter
-        (activity as MainActivity).supportActionBar!!.title = "Edit Pool"
+        (activity as MainActivity).supportActionBar!!.title = getString(R.string.edit_pool_title)
 
         activePoolBackup = activePool.copy()
 
@@ -57,10 +57,10 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
 
     private fun attemptSave() {
         if (activePool.getSelected().size < 2) {
-            Toast.makeText(activity, "A pool must have at least two selections", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getString(R.string.pool_size_req), Toast.LENGTH_SHORT).show()
         }
         else {
-            Toast.makeText(activity, "Pool Saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getString(R.string.pool_saved), Toast.LENGTH_SHORT).show()
             savePools(activity!!)
             (activity as MainActivity).removeFragment()
         }
@@ -92,9 +92,9 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
 
     private fun showLeaveEditDialog() {
         val view = requireActivity().layoutInflater.inflate(R.layout.dialog_basic, null)
-        view.setTitle("Cancel Pool Edits?")
-        view.setMessage("Leaving without saving will remove the changes you have just made.")
-        val (negButton, posButton) = view.addButtons("Keep Editing", "Leave")
+        view.setTitle(getString(R.string.cancel_pool_edits))
+        view.setMessage(getString(R.string.cancel_pool_edits_message))
+        val (negButton, posButton) = view.addButtons(getString(R.string.keep_editing), getString(R.string.leave))
 
         val dialog = createDialog(context!!, view)
 
@@ -106,7 +106,8 @@ class CharacterSelectionFragment : Fragment(), FragOnBackPressed {
                 deletePool(activePool)
             }
             else {
-                activePool = activePoolBackup.copy()
+                pools[activePoolPos] = activePoolBackup.copy()
+                selectPool(activePoolPos)
             }
             (activity as MainActivity).removeFragment()
             dialog.dismiss()

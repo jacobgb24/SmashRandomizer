@@ -1,16 +1,18 @@
 package com.jacobgb24.smashrandomizer.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.*
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.jacobgb24.smashrandomizer.*
+import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.Character
 import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.model.loadDefaultCharacter
+import com.jacobgb24.smashrandomizer.setHelp
 import com.jacobgb24.smashrandomizer.view.ironman.IronmanStartupFragment
 import kotlinx.android.synthetic.main.fragment_random.view.*
 
@@ -28,7 +30,7 @@ class RandomFragment : Fragment() {
     // Create view hierarchy controlled by fragment.
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_random, container, false)
-        (activity as MainActivity).supportActionBar!!.title = "Smash Randomizer"
+        (activity as MainActivity).supportActionBar!!.title = getString(R.string.smash_randomizer)
 
         view.button_random.addRippleFG()
         view.button_iron_man.addRippleFG()

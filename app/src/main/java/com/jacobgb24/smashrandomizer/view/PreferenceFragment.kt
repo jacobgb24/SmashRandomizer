@@ -1,24 +1,19 @@
 package com.jacobgb24.smashrandomizer.view
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.PreferenceFragmentCompat
-import android.util.Log
-import android.view.MenuItem
-import android.widget.Toast
-import com.jacobgb24.smashrandomizer.R
-import android.view.ViewGroup
-import android.view.LayoutInflater
-import android.view.View
-import com.jacobgb24.smashrandomizer.BuildConfig
-import com.jacobgb24.smashrandomizer.controller.MainActivity
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.webkit.WebView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.jacobgb24.smashrandomizer.model.activePool
+import androidx.preference.PreferenceFragmentCompat
+import com.jacobgb24.smashrandomizer.BuildConfig
+import com.jacobgb24.smashrandomizer.R
+import com.jacobgb24.smashrandomizer.controller.MainActivity
 import com.jacobgb24.smashrandomizer.model.clearPools
-import com.jacobgb24.smashrandomizer.model.deletePool
 import com.jacobgb24.smashrandomizer.playSound
 
 
@@ -40,9 +35,9 @@ class PreferenceFragment: PreferenceFragmentCompat() {
         val clearPref = findPreference("pref_clear")
         clearPref.setOnPreferenceClickListener {
             val view = requireActivity().layoutInflater.inflate(R.layout.dialog_basic, null)
-            view.setTitle("Clear all pool data?")
-            view.setMessage("This cannot be undone.")
-            val (negButton, posButton) = view.addButtons("Cancel", "Clear")
+            view.setTitle(getString(R.string.clear_all_pool_data))
+            view.setMessage(getString(R.string.clear_pool_message))
+            val (negButton, posButton) = view.addButtons(getString(R.string.cancel), getString(R.string.clear))
 
             val dialog = createDialog(context!!, view)
             negButton.setOnClickListener {
@@ -95,7 +90,7 @@ class PreferenceFragment: PreferenceFragmentCompat() {
                     Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jacobgb24/SmashRandomizer"))
                 )
             } catch (e: Exception) {
-                Toast.makeText(activity, "Could not open link", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.could_not_open_link), Toast.LENGTH_SHORT).show()
             }
             true
         }
@@ -106,7 +101,7 @@ class PreferenceFragment: PreferenceFragmentCompat() {
         view.loadUrl(url)
         val alertDialog = AlertDialog.Builder(context!!)
             .setView(view)
-            .setPositiveButton("ok", null)
+            .setPositiveButton(getString(R.string.got_it), null)
             .create()
         alertDialog.show()
     }

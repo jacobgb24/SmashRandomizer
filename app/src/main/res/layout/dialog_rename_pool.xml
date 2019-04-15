@@ -9,8 +9,10 @@
     <EditText
         android:id="@+id/edittext_rename_pool"
         android:layout_margin="16dp"
-        android:inputType="textEmailAddress"
+        android:hint="@string/new_name"
+        android:inputType="textAutoCorrect"
         android:importantForAutofill="auto"
+        android:fontFamily="@font/css_font_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

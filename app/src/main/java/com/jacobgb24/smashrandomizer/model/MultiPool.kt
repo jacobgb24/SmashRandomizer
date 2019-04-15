@@ -34,23 +34,14 @@ fun newPool(name: String, baseSelection: Boolean = true) {
     pools.add(pool)
 }
 
-
-fun deletePool(index: Int) {
-    if (activePool == pools[index]) {
-        if (index != 0) {
-            selectPool(0)
-        }
-        else {
-            selectPool(1)
-        }
-    }
-    pools.removeAt(index)
+fun getActiveIndex(): Int {
+    return pools.indexOf(activePool)
 }
 
 fun deletePool(pool: Pool) {
     val ind = pools.indexOf(pool)
     if (ind < 0) {
-        Log.e("POOL", "Pool not found to delete Expected ${pool.name} of size ${pool.size()}")
+        Log.e("POOL", "Pool not found to delete. Expected ${pool.name} of size ${pool.size()}")
         return
     }
     pools.remove(pool)

@@ -7,10 +7,7 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.RelativeSizeSpan
 import android.text.style.SuperscriptSpan
-import android.util.Log
-import java.io.Serializable
 import kotlin.math.floor
-
 
 
 class Character(val name: String, val imageName: String, val context: Context) {

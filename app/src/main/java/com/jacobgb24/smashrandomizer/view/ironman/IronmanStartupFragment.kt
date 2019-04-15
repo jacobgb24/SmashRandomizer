@@ -1,9 +1,10 @@
 package com.jacobgb24.smashrandomizer.view.ironman
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import android.view.*
-import android.widget.Toast
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.addRippleFG
 import com.jacobgb24.smashrandomizer.controller.CharactersAdapter
@@ -25,7 +26,7 @@ class IronmanStartupFragment : Fragment() {
     // Create view hierarchy controlled by fragment.
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_ironman_startup, container, false)
-        (activity as MainActivity).supportActionBar!!.title = "Ironman"
+        (activity as MainActivity).supportActionBar!!.title = getString(R.string.ironman)
         view.text_ironman_start_pool.text = "Pool: ${activePool.name}"
         view.grid_ironman_start_chars.adapter = CharactersAdapter(activity!!, activePool.getSelected())
         view.button_ironman_start_change_pool.setOnClickListener {

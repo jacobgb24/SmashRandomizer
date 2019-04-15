@@ -1,8 +1,5 @@
 package com.jacobgb24.smashrandomizer.model
 
-import android.util.Log
-import kotlinx.android.synthetic.main.fragment_ironman.view.*
-import java.io.Serializable
 import java.text.DecimalFormat
 import kotlin.math.min
 

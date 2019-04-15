@@ -1,7 +1,6 @@
 package com.jacobgb24.smashrandomizer.controller
 
 import android.content.Context
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.jacobgb24.smashrandomizer.R
 import com.jacobgb24.smashrandomizer.model.Character
-import com.jacobgb24.smashrandomizer.model.activePool
 import com.jacobgb24.smashrandomizer.setHelp
 import kotlinx.android.synthetic.main.item_pool_character.view.*
 
