@@ -25,6 +25,15 @@ import kotlinx.android.synthetic.main.dialog_rename_pool.view.*
 import java.lang.Exception
 
 /**
+ * Defines a set of tools for hand-defining a dialog.
+ * These methods should only be called on a view being used for a dialog.
+ * The root view of the dialog must be a LinearLayout with id `dialog_root`
+ *
+ * Generally the below methods should be called in order, but title or message may be skipped
+ */
+
+
+/**
  * Creates a dialog with the given view
  */
 fun createDialog(context: Context, view: View): AlertDialog {
@@ -35,9 +44,7 @@ fun createDialog(context: Context, view: View): AlertDialog {
 
 
 /**
- * Adds a title to the given view.
- * The view must have a LinearLayout with id: dialog_root. This should be the root of the view in most cases
- *
+ * Adds a title to the dialog.
  */
 fun View.setTitle(titleText: String) {
     val title = TextView(context)
@@ -59,6 +66,10 @@ fun View.setTitle(titleText: String) {
     }
 }
 
+/**
+ * Adds a message to the dialog.
+ * It will be placed in the second position
+ */
 fun View.setMessage(messageText: String) {
     val message = TextView(context)
     with(message) {
@@ -80,9 +91,7 @@ fun View.setMessage(messageText: String) {
 }
 
 /**
- * Adds a negative and positive button to the view.
- * The view must have a LinearLayout with id: dialog_root. This should be the root of the view in most cases
- *
+ * Adds a negative and positive button to the dialog.
  */
 fun View.addButtons(negText: String, posText: String): Pair<Button, Button> {
 
