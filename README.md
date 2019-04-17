@@ -1,7 +1,11 @@
 # SmashRandomizer
 
-<a href='https://play.google.com/store/apps/details?id=com.jacobgb24.smashrandomizer&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
--------------------------------
+
+<div width="100%">
+  <img src="images/promo.png" width="55%" align="middle" />
+  <a href='https://play.google.com/store/apps/details?id=com.jacobgb24.smashrandomizer&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="40%" align="middle"/></a>
+</div>
+
 
 
 ### About ###
@@ -13,10 +17,13 @@ Smash Randomizer gives you control over choosing a random character in Super Sma
 - Create multiple pools and quickly switch between them
 - Run through your pool in an ironman
 
-![Screenshot 1](/screenshots/character.webp) | ![Screenshot 2](/screenshots/pools.webp) | ![Screenshot 3](/screenshots/ironman.webp)
----------------------------------------------|------------------------------------------|-------------------------------------------
+<div>
+  <img src="./images/character.webp" alt="Random Character" hspace="10" width="30%"/>
+  <img src="./images/pools.webp" alt="Character Pools" hspace="10" width="30%"/>
+  <img src="./images/ironman.webp" alt="Ironman" hspace="10" width="30%"/>
+</div>
 
-<br><br><br>
+<br><br><br><br><br>
 
 **Legal**
 This app has no association with Nintendo or Super Smash Bros. Ultimate. All character portraits, character icons, and fonts are the sole property of their respective owners. This app is completely free and was created for educational purposes. 
