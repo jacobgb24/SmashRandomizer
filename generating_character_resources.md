@@ -1,3 +1,8 @@
+#### Obtaining
+Images are directly sourced from [smashbros.com](https://www.smashbros.com/en_US/fighter/index.html). Portraits can be found in each character's page. Icons are found on the [Display by Series](https://www.smashbros.com/en_US/fighter/series.html) page.
+
+<br>
+
 #### Converting 
 
 Given a character image as a png, run the following commands in sequnce to generate a webp. 
