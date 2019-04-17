@@ -116,7 +116,6 @@ class PoolListFragment : Fragment(), PoolClickHandler {
             dialog.dismiss()
         }
 
-
         dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         dialog.show()
     }
@@ -146,6 +145,7 @@ class PoolListFragment : Fragment(), PoolClickHandler {
             (activity as MainActivity).addFragment(CharacterSelectionFragment())
         }
 
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         dialog.show()
     }
 

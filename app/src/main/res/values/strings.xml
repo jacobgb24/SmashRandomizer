@@ -26,7 +26,7 @@
     <string name="rename">Rename</string>
     <string name="delete">Delete</string>
     <string name="new_pool">New Pool</string>
-    <string name="name">Name</string>
+    <string name="pool_name">Pool Name</string>
     <string name="select_all_characters_initially">Select all characters initially</string>
     <string name="new_name">New Name</string>
     <string name="cancel_pool_edits">Cancel Pool Edits?</string>

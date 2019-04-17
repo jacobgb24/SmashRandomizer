@@ -96,6 +96,7 @@ fun Character.getAppearanceOrder(): Number {
         "inkling.webp" -> 64
         "isabelle.webp" -> 68
         "jigglypuff.webp" -> 12
+        "joker.webp" -> 71
         "ken.webp" -> 60.5
         "kingDedede.webp" -> 39
         "kingKRool.webp" -> 67

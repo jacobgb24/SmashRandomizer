@@ -60,7 +60,10 @@ fun generateCharacters(context: Context): ArrayList<Character> {
             "pokemonTrainer.webp" -> "Pokémon Trainer"
             else -> getNameFromPath(image)
         }
-
+        // for testing, skip over images that start with #
+        if (image.startsWith("#")) {
+            continue
+        }
         characters.add(Character(name, image, context))
     }
     characters.sortByAppearance()

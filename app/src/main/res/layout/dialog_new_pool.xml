@@ -8,13 +8,13 @@
 
     <EditText
         android:id="@+id/edittext_new_pool"
-        android:inputType="textEmailAddress"
+        android:inputType="textAutoCorrect"
         android:layout_width="match_parent"
         android:importantForAutofill="auto"
         android:layout_height="wrap_content"
         android:fontFamily="@font/css_font_light"
         android:layout_margin="16dp"
-        android:hint="@string/name"/>
+        android:hint="@string/pool_name"/>
 
     <Switch
         android:id="@+id/checkbox_new_pool_sel_all"
