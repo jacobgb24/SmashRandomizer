@@ -1,12 +1,22 @@
 # SmashRandomizer
 
-#### [Kotlin Docs](https://kotlinlang.org/docs/reference/)
-
-#### Past Projects for Reference
-- [Launch Companion](https://github.com/jacobgb24/LaunchCompanion)
-- [LDS Timeline](https://github.com/jacobgb24/LDSTimeline)
-- [Ticket To Ride (Private)](https://github.com/jacobgb24/TicketToRide)
+<a href='https://play.google.com/store/apps/details?id=com.jacobgb24.smashrandomizer&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+-------------------------------
 
 
-#### Emulator Use
-Choose Pixel 2XL API 26 to match my phone's size and version
+### About ###
+Smash Randomizer gives you control over choosing a random character in Super Smash Bros. Ultimate. With this app, you can create a pool of characters you are interested in playing and then get a random character from that pool.
+
+
+**Features:** 
+- Get a random character in one tap
+- Create multiple pools and quickly switch between them
+- Run through your pool in an ironman
+
+![Screenshot 1](/screenshots/character.webp) | ![Screenshot 2](/screenshots/pools.webp) | ![Screenshot 3](/screenshots/ironman.webp)
+---------------------------------------------|------------------------------------------|-------------------------------------------
+
+<br><br><br>
+
+**Legal**
+This app has no association with Nintendo or Super Smash Bros. Ultimate. All character portraits, character icons, and fonts are the sole property of their respective owners. This app is completely free and was created for educational purposes. 
