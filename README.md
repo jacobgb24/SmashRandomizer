@@ -17,10 +17,10 @@ Smash Randomizer gives you control over choosing a random character in Super Sma
 - Create multiple pools and quickly switch between them
 - Run through your pool in an ironman
 
-<div>
-  <img src="./images/character.webp" alt="Random Character" hspace="10" width="30%"/>
-  <img src="./images/pools.webp" alt="Character Pools" hspace="10" width="30%"/>
-  <img src="./images/ironman.webp" alt="Ironman" hspace="10" width="30%"/>
+<div width="100%">
+  <img src="./images/character.webp" alt="Random Character" hspace="1%" width="30%"/>
+  <img src="./images/pools.webp" alt="Character Pools" hspace="1%" width="30%"/>
+  <img src="./images/ironman.webp" alt="Ironman" hspace="1%" width="30%"/>
 </div>
 
 <br><br><br><br><br>
