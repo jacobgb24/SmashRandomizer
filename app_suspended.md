@@ -8,7 +8,7 @@ the target age. While I had just added Hero a few weeks ago without issue, this 
 caused the app to be auto-flagged and removed._
 
 _While this surprised me, the reasoning somewhat made sense. The application does heavily use copy-righted content. However, I believe it
-is within fair use since the app makes no profit, and does not detract from the value of Smash Bros. Infact, it increases the game's 
+is within fair use since the app makes no profit, and does not detract from the value of Smash Bros. In fact, it increases the game's 
 value by acting as a companion. So I made the following appeal statement:_
 
 ---
@@ -67,7 +67,7 @@ not read or considered at all._
 > 
 > I feel that I addressed the policy coverage page you linked to in my original appeal. In addition, I do not think the 4 points above are applicable, with the exception of the assets which I justified in my appeal. In the odd case that my appeal statement did not get included, here it is:
 >
-> {verbatim copy & paste of original appeal statement ommitted for brevity}
+> {verbatim copy & paste of original appeal statement omitted for brevity}
 > 
 > Could you please provide a specific example of how my application violates policies or how my justifications above are insufficient? I also don't see how I could remove the assets I use if I were to republish the app since they are fundamental to its design. 
 > I'm confused how the app could pass initial review and a recent update, but suddenly be suspended for updating the content rating.
@@ -101,7 +101,7 @@ a concrete answer._
 > Thanks,
 > Jacob
 
-_At this point, I was replied to with a survey asking how support did and telling me to email them again if I wasn't satisifed. I
+_At this point, I was replied to with a survey asking how support did and telling me to email them again if I wasn't satisfied. I
 was busy preparing for school so I didn't get around to handling this for a week or so. Eventually I resent the email above asking for 
 an answer._
 
