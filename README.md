@@ -1,7 +1,8 @@
-# App Suspended 
+### Notice: App Suspended 
 
 This app has been suspended from the Google Play Store. Please see [here](app_suspended.md) for details. In all likelihood this app will
-not be available on Google Play and may no longer receive updates. Sorry for the inconvenience. 
+not be available on Google Play and may no longer receive updates. I am disappointed to see this happen as both of us enjoyed working
+on this app, and it was great to see many others using it. Sorry for the inconvenience this may cause.
 
 ---
 
@@ -30,7 +31,8 @@ Smash Randomizer gives you control over choosing a random character in Super Sma
   <img src="./images/ironman.webp" alt="Ironman" hspace="1%" width="30%"/>
 </div>
 
-<br><br><br><br><br>
+<br><br><br>
 
 **Legal**
+
 This app has no association with Nintendo or Super Smash Bros. Ultimate. All character portraits, character icons, and fonts are the sole property of their respective owners. This app is completely free and was created for educational purposes. 
