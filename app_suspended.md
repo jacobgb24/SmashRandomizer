@@ -1,3 +1,7 @@
+_Smash Randomizer was recently suspended from the Play Store. This means the application was completely removed and I lost all users.
+To put the app back on the store I would have to upload under a new name. Below is the series of events that unfolded as I tried
+to get this fixed. Quotes are verbatim, italics are my commentary on the situation_
+
 ### Initial Notification
 
 ![suspension email](images/app_suspended.png)
@@ -123,7 +127,7 @@ an answer._
 
 > Yes, I've read everything you've supplied including the bold statement in your previous email.
 > 
-> The issue is that I do not see how my app violates any policy that you have provided. Therefore, I cannot create a "new compliant version of the app" because I don't know how my current app is non-compliant. 
+> The issue is that **I do not see how my app violates any policy that you have provided**. Therefore, I cannot create a "new compliant version of the app" because I don't know how my current app is non-compliant. 
 > On the "policy coverage" page it specifically says that "we’re committed to ensuring developers understand how they can bring their app into compliance", yet I haven't received any clear guidance on how to bring my app into compliance. 
 > 
 > I also still don't understand how my app was not in violation when updated a few weeks prior, but setting the content rating suddenly flagged it. This just further adds to the confusion because it shows my app did not violate any policies (otherwise the update would've been blocked), and nothing has changed in my application since that point.
